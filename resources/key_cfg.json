@@ -1,0 +1,21 @@
+{
+  "Left" : "Left",
+  "Right": "Right",
+  "Up" : "Up",
+  "Down": "Down",
+
+  "Select":"Return",
+  "Power" : "/",
+  "Backspace" : "Backspace",
+  "Back" : "`",
+
+  "Play" : "Tab",
+  "Rev" : ",",
+  "Fwd" : ".",
+  "Info" : "\\",
+
+  "VolumeUp" : "=",
+  "VolumeDown" : "-",
+  "VolumeMute" : "0",
+  "Home" : "Esc"
+}

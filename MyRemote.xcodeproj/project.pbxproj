@@ -7,13 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3424AABC3C00A7DAAA /* Errors.swift */; };
+		EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3724AAE53100A7DAAA /* Listener.swift */; };
+		EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */; };
+		EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */; };
+		EFD8EA3E24A5AE2E00407555 /* ContentViewCEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */; };
+		EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */; };
+		EFD8EA4624A5CF8200407555 /* RemoteTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA4524A5CF8200407555 /* RemoteTypes.swift */; };
 		EFD964AD24A55D5600BCBB86 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964AC24A55D5600BCBB86 /* AppDelegate.swift */; };
-		EFD964AF24A55D5600BCBB86 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964AE24A55D5600BCBB86 /* ContentView.swift */; };
+		EFD964AF24A55D5600BCBB86 /* ContentViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964AE24A55D5600BCBB86 /* ContentViewMain.swift */; };
 		EFD964B124A55D5800BCBB86 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFD964B024A55D5800BCBB86 /* Assets.xcassets */; };
 		EFD964B424A55D5800BCBB86 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFD964B324A55D5800BCBB86 /* Preview Assets.xcassets */; };
 		EFD964B724A55D5800BCBB86 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EFD964B524A55D5800BCBB86 /* Main.storyboard */; };
 		EFD964C324A55D5800BCBB86 /* MyRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964C224A55D5800BCBB86 /* MyRemoteTests.swift */; };
 		EFD964CE24A55D5800BCBB86 /* MyRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */; };
+		EFD964E024A5996500BCBB86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964DF24A5996500BCBB86 /* Constants.swift */; };
+		EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */; };
+		EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A024A703F3003829B8 /* ComponentTop.swift */; };
+		EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A424A89365003829B8 /* ComponentDevices.swift */; };
+		EFFEE9AB24AA9CAC003829B8 /* key_cfg.json in Resources */ = {isa = PBXBuildFile; fileRef = EFFEE9AA24AA9CAC003829B8 /* key_cfg.json */; };
+		EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +47,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF838F3424AABC3C00A7DAAA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		EF838F3724AAE53100A7DAAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
+		EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
+		EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRoku.swift; sourceTree = "<group>"; };
+		EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewCEC.swift; sourceTree = "<group>"; };
+		EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewSettings.swift; sourceTree = "<group>"; };
+		EFD8EA4324A5B9EF00407555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		EFD8EA4524A5CF8200407555 /* RemoteTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteTypes.swift; sourceTree = "<group>"; };
 		EFD964A924A55D5600BCBB86 /* MyRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD964AC24A55D5600BCBB86 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		EFD964AE24A55D5600BCBB86 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		EFD964AE24A55D5600BCBB86 /* ContentViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewMain.swift; sourceTree = "<group>"; };
 		EFD964B024A55D5800BCBB86 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFD964B324A55D5800BCBB86 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		EFD964B624A55D5800BCBB86 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -48,6 +69,12 @@
 		EFD964C924A55D5800BCBB86 /* MyRemoteUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyRemoteUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemoteUITests.swift; sourceTree = "<group>"; };
 		EFD964CF24A55D5800BCBB86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EFD964DF24A5996500BCBB86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentArrows.swift; sourceTree = "<group>"; };
+		EFFEE9A024A703F3003829B8 /* ComponentTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTop.swift; sourceTree = "<group>"; };
+		EFFEE9A424A89365003829B8 /* ComponentDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDevices.swift; sourceTree = "<group>"; };
+		EFFEE9AA24AA9CAC003829B8 /* key_cfg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = key_cfg.json; sourceTree = "<group>"; };
+		EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +102,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF838F3624AAE52000A7DAAA /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				EF838F3724AAE53100A7DAAA /* Listener.swift */,
+				EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */,
+			);
+			path = keyboard;
+			sourceTree = "<group>";
+		};
+		EFD8EA4424A5CF6D00407555 /* core */ = {
+			isa = PBXGroup;
+			children = (
+				EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */,
+				EFD8EA4524A5CF8200407555 /* RemoteTypes.swift */,
+				EF838F3424AABC3C00A7DAAA /* Errors.swift */,
+			);
+			path = core;
+			sourceTree = "<group>";
+		};
 		EFD964A024A55D5600BCBB86 = {
 			isa = PBXGroup;
 			children = (
+				EFD8EA4324A5B9EF00407555 /* README.md */,
+				EFFEE9A924AA9BD6003829B8 /* resources */,
 				EFD964AB24A55D5600BCBB86 /* MyRemote */,
 				EFD964C124A55D5800BCBB86 /* MyRemoteTests */,
 				EFD964CC24A55D5800BCBB86 /* MyRemoteUITests */,
@@ -98,8 +146,12 @@
 		EFD964AB24A55D5600BCBB86 /* MyRemote */ = {
 			isa = PBXGroup;
 			children = (
+				EF838F3624AAE52000A7DAAA /* keyboard */,
+				EFFEE9AC24AAA0E5003829B8 /* constants */,
+				EFD8EA4424A5CF6D00407555 /* core */,
+				EFD964DC24A5908F00BCBB86 /* cec */,
+				EFD964DB24A5906F00BCBB86 /* ui */,
 				EFD964AC24A55D5600BCBB86 /* AppDelegate.swift */,
-				EFD964AE24A55D5600BCBB86 /* ContentView.swift */,
 				EFD964B024A55D5800BCBB86 /* Assets.xcassets */,
 				EFD964B524A55D5800BCBB86 /* Main.storyboard */,
 				EFD964B824A55D5800BCBB86 /* Info.plist */,
@@ -133,6 +185,51 @@
 				EFD964CF24A55D5800BCBB86 /* Info.plist */,
 			);
 			path = MyRemoteUITests;
+			sourceTree = "<group>";
+		};
+		EFD964DB24A5906F00BCBB86 /* ui */ = {
+			isa = PBXGroup;
+			children = (
+				EFD964AE24A55D5600BCBB86 /* ContentViewMain.swift */,
+				EFFEE99B24A70174003829B8 /* components */,
+				EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */,
+				EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */,
+				EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */,
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
+		EFD964DC24A5908F00BCBB86 /* cec */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cec;
+			sourceTree = "<group>";
+		};
+		EFFEE99B24A70174003829B8 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */,
+				EFFEE9A024A703F3003829B8 /* ComponentTop.swift */,
+				EFFEE9A424A89365003829B8 /* ComponentDevices.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		EFFEE9A924AA9BD6003829B8 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				EFFEE9AA24AA9CAC003829B8 /* key_cfg.json */,
+			);
+			path = resources;
+			sourceTree = "<group>";
+		};
+		EFFEE9AC24AAA0E5003829B8 /* constants */ = {
+			isa = PBXGroup;
+			children = (
+				EFD964DF24A5996500BCBB86 /* Constants.swift */,
+			);
+			path = constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -239,6 +336,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFFEE9AB24AA9CAC003829B8 /* key_cfg.json in Resources */,
 				EFD964B724A55D5800BCBB86 /* Main.storyboard in Resources */,
 				EFD964B424A55D5800BCBB86 /* Preview Assets.xcassets in Resources */,
 				EFD964B124A55D5800BCBB86 /* Assets.xcassets in Resources */,
@@ -266,8 +364,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFD964AF24A55D5600BCBB86 /* ContentView.swift in Sources */,
+				EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */,
+				EFD8EA3E24A5AE2E00407555 /* ContentViewCEC.swift in Sources */,
+				EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */,
+				EFD964AF24A55D5600BCBB86 /* ContentViewMain.swift in Sources */,
+				EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */,
+				EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */,
 				EFD964AD24A55D5600BCBB86 /* AppDelegate.swift in Sources */,
+				EFD8EA4624A5CF8200407555 /* RemoteTypes.swift in Sources */,
+				EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */,
+				EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */,
+				EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */,
+				EFD964E024A5996500BCBB86 /* Constants.swift in Sources */,
+				EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */,
+				EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -8,40 +8,6 @@
 
 import Foundation
 
-struct RemoteButton {
-    var type: RemoteType
-    var symbol: String
-    var endpoint: CommandEndpoint
-    var command: String
-    var keyboardKey: String?
-    
-    func exec() {
-        switch self.type {
-        case .roku:
-            RemoteButton.roku(endpoint: self.endpoint, args: [command])
-        case .cec:
-            print("cec not yet implemented")
-        }
-    }
-    
-    static func roku(endpoint: CommandEndpoint, args: [String]) {
-        net(url: "http://192.168.1.219:8060/\(endpoint)/\(args.joined(separator: "/"))", method: "POST")
-    }
-    
-    static private func net(url: String, method: String) {
-        print("net(url: \(url), method: \(method))")
-         var req = URLRequest(url: URL(string: url)!)
-         req.httpMethod = method
-         let task = URLSession.shared.dataTask(with: req) { data, response, error in
-             print("\tRESULT from: \(url)")
-             print("\t\tdata=\(String(describing: data))")
-             print("\t\tresponse=\(String(describing: response))")
-             print("\t\terror=\(String(describing: error))")
-         }
-         task.resume()
-     }
-}
-
 struct Buttons {
     struct Roku {
         static let MUTE             = RemoteButton(type: .roku, symbol: "🔇", endpoint: .keypress, command: "Mute")
@@ -73,6 +39,9 @@ struct Buttons {
     }
 
     struct CEC {
-        
+        static let MUTE             = RemoteButton(type: .cec, symbol: "🔇", endpoint: .volume, command: "mute")
+        static let POWER            = RemoteButton(type: .cec, symbol: "🔌", endpoint: .power, command: "TV")
+        static let VOLUME_DOWN      = RemoteButton(type: .cec, symbol: "−", endpoint: .volume, command: "up")
+        static let VOLUME_UP        = RemoteButton(type: .cec, symbol: "＋", endpoint: .volume, command: "down")
     }
 }

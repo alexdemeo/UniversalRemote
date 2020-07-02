@@ -9,30 +9,42 @@
 import Cocoa
 import SwiftUI
 
+class DisplaySettingsPane: ObservableObject {
+    @Published var shown: Bool = false
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var window: NSWindow!
     var button: NSStatusBarButton!
     
-    let statusItem: NSStatusItem    = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
-    let popover: NSPopover          = NSPopover()
+    let statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let popover: NSPopover = NSPopover()
+    
+    var settings: Settings = Settings.load()!
+    
+    var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         if let button = self.statusItem.button {
             button.image = NSImage(named:NSImage.Name("img_status_bar"))
-            button.action = #selector(togglePopover)
+            button.action = #selector(self.togglePopover)
         }
         self.popover.behavior = .transient
-        self.popover.contentViewController = NSHostingController(rootView: ContentViewMain()
-            .buttonStyle(BorderlessButtonStyle()))
-        NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: { event in
-            if Constants.KEYBOARD_DEFAULT_ENABLED {
-                keyDown(keycode: event.keyCode)
-                return event
-            } else {
+        let hostingController = NSHostingController(rootView: ContentViewMain()
+            .environmentObject(self.settings)
+            .environmentObject(self.displaySettingsPane)
+            .buttonStyle(BorderlessButtonStyle())
+        )
+        self.popover.contentViewController = hostingController
+        
+        NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: {
+            if self.settings.keyboardMode != .off && !self.displaySettingsPane.shown {
+                keyDown(keycode: $0.keyCode)
                 return nil
             }
+            return $0
         })
     }
     
@@ -48,6 +60,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
+    }
+    
+    static func settings() -> Settings {
+        return (NSApplication.shared.delegate as! AppDelegate).settings
     }
 }
 

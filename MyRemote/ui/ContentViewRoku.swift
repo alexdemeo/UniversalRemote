@@ -9,7 +9,6 @@
 import SwiftUI
 
 struct ContentViewRoku: View {
-    
     var body: some View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL) {
             ComponentTop(buttonVolumeUp: Buttons.Roku.VOLUME_UP,
@@ -79,6 +78,6 @@ struct ContentViewRoku: View {
 struct ContentViewRoku_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewRoku()
-            .buttonStyle(BorderlessButtonStyle()).frame(width: 260, height: 500)
+            .buttonStyle(BorderlessButtonStyle()).frame(width: Constants.REMOTE_WIDTH, height: Constants.REMOTE_HEIGHT)
     }
 }

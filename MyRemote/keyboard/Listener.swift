@@ -11,6 +11,7 @@ import SwiftUI
 
 func keyDown(keycode: UInt16) { // add param shift: Bool for if shift is pressed, adding caps accordingly
     if let key = KEYS[keycode] {
+        print("Input: \(key)")
         if let btn = Constants.DEFAULT_KEYBINDS_ROKU[key] {
             print("from keyboard: \(btn.symbol)")
             btn.exec()

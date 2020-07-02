@@ -35,8 +35,8 @@ import Foundation
 struct Constants {
     /**************** Defined constants ******************/
     
-    static let WINDOW_WIDTH: CGFloat                = 240 * 2
-    static let WINDOW_HEIGHT: CGFloat               = 520
+    static let WINDOW_WIDTH: CGFloat                = 340 * 2
+    static let WINDOW_HEIGHT: CGFloat               = 620
     
     static let ROWS: Int                            = 17
     static let COLS: Int                            = 3
@@ -65,8 +65,10 @@ struct Constants {
                                                     //        "escape"        : Buttons.Roku.?
                                                     ]
     
-    static let KEYBOARD_DEFAULT_ENABLED: Bool       = true
-    
+    static let DEFAULT_SETTINGS: Settings           = Settings(ipRoku: "",
+                                                               ipPi: "",
+                                                               keyboardMode: KeyboardMode.off)
+        
     /**************** Inferred constants ******************/
     
     static let REMOTE_WIDTH: CGFloat                = WINDOW_WIDTH / 2.0                                    // 380

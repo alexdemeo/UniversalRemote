@@ -11,29 +11,10 @@ import SwiftUI
 struct ContentViewCEC: View {
     var body: some View {
         VStack(alignment: .center) {
-            HStack(alignment: .top) {
-                Button(action: {
-                    
-                }) {
-                    Text("🔇")
-                        .multilineTextAlignment(.leading)
-                        .padding(.trailing, 100.0)
-                        .frame(width: Constants.CELL_WIDTH)
-                    
-                }
-                Spacer()
-                    .padding()
-                    .frame(width: -Constants.REMOTE_CENTER_GAP_WIDTH)                
-                Button(action: {
-                    
-                }) {
-                    Text("🔌")
-                        .multilineTextAlignment(.trailing)
-                        .padding(.leading, 100.0)
-                        .frame(width: Constants.CELL_WIDTH)
-                }
-            }
-            .padding(.all)
+            ComponentTop(buttonVolumeUp: Buttons.CEC.VOLUME_UP,
+            buttonVolumeDown: Buttons.CEC.VOLUME_DOWN,
+            buttonPower: Buttons.CEC.POWER,
+            buttonMute: Buttons.CEC.MUTE)
         }
     }
 }
@@ -42,5 +23,6 @@ struct ContentViewCEC: View {
 struct ContentViewCEC_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewCEC()
+            .buttonStyle(BorderlessButtonStyle()).frame(width: Constants.REMOTE_WIDTH, height: Constants.REMOTE_HEIGHT)
     }
 }

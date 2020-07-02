@@ -9,26 +9,44 @@
 import SwiftUI
 
 struct ContentViewMain: View {
-    @State var debugRemote: RemoteType? = .roku
+    private var debugRemote: RemoteType? = nil
+
+    @EnvironmentObject var settings: Settings
+    @EnvironmentObject var displaySettingsPane: DisplaySettingsPane
     
     var body: some View {
         if let remote = debugRemote {
-            print("Debug: ", remote.rawValue)
             return remote == .roku ?
                 AnyView(ContentViewRoku().frame(width: Constants.REMOTE_WIDTH, height: Constants.REMOTE_HEIGHT)) :
                 AnyView(ContentViewCEC().frame(width: Constants.REMOTE_WIDTH, height: Constants.REMOTE_HEIGHT))
         } else {
-            print("Debug: ", "both")
-           return AnyView(HStack {
-                ContentViewRoku()
-                ContentViewCEC()
-           }.frame(width: Constants.WINDOW_WIDTH, height: Constants.WINDOW_HEIGHT))
+            return AnyView(
+                VStack{
+                    HStack {
+                        ContentViewRoku()
+                        Divider().padding(.horizontal)
+                        ContentViewCEC()
+                    }
+                    if self.displaySettingsPane.shown {
+                        Divider()
+                        ContentViewSettings()
+                    }
+                    HStack {
+                        Button(action: {
+                            if self.displaySettingsPane.shown {
+                                self.settings.save()
+                            }
+                            self.displaySettingsPane.shown.toggle()
+                        }) {
+                            Text("⚙")
+                        }
+                    }
+                }
+                .padding(.all)
+            )
         }
     }
 }
-
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

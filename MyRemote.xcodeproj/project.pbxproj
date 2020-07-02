@@ -10,6 +10,8 @@
 		EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3424AABC3C00A7DAAA /* Errors.swift */; };
 		EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3724AAE53100A7DAAA /* Listener.swift */; };
 		EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */; };
+		EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3C24ABDD2D00A7DAAA /* Settings.swift */; };
+		EF838F4124ABE07500A7DAAA /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = EF838F4024ABE07500A7DAAA /* settings.json */; };
 		EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */; };
 		EFD8EA3E24A5AE2E00407555 /* ContentViewCEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */; };
 		EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */; };
@@ -22,10 +24,10 @@
 		EFD964C324A55D5800BCBB86 /* MyRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964C224A55D5800BCBB86 /* MyRemoteTests.swift */; };
 		EFD964CE24A55D5800BCBB86 /* MyRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */; };
 		EFD964E024A5996500BCBB86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964DF24A5996500BCBB86 /* Constants.swift */; };
+		EFF5949324ABE364003820DB /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF5949224ABE364003820DB /* Net.swift */; };
 		EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */; };
 		EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A024A703F3003829B8 /* ComponentTop.swift */; };
 		EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A424A89365003829B8 /* ComponentDevices.swift */; };
-		EFFEE9AB24AA9CAC003829B8 /* key_cfg.json in Resources */ = {isa = PBXBuildFile; fileRef = EFFEE9AA24AA9CAC003829B8 /* key_cfg.json */; };
 		EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
@@ -50,6 +52,8 @@
 		EF838F3424AABC3C00A7DAAA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EF838F3724AAE53100A7DAAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
+		EF838F3C24ABDD2D00A7DAAA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		EF838F4024ABE07500A7DAAA /* settings.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = settings.json; sourceTree = "<group>"; };
 		EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRoku.swift; sourceTree = "<group>"; };
 		EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewCEC.swift; sourceTree = "<group>"; };
 		EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewSettings.swift; sourceTree = "<group>"; };
@@ -70,10 +74,10 @@
 		EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemoteUITests.swift; sourceTree = "<group>"; };
 		EFD964CF24A55D5800BCBB86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFD964DF24A5996500BCBB86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		EFF5949224ABE364003820DB /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
 		EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentArrows.swift; sourceTree = "<group>"; };
 		EFFEE9A024A703F3003829B8 /* ComponentTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTop.swift; sourceTree = "<group>"; };
 		EFFEE9A424A89365003829B8 /* ComponentDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDevices.swift; sourceTree = "<group>"; };
-		EFFEE9AA24AA9CAC003829B8 /* key_cfg.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = key_cfg.json; sourceTree = "<group>"; };
 		EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,12 +115,22 @@
 			path = keyboard;
 			sourceTree = "<group>";
 		};
+		EF838F3F24ABDF3300A7DAAA /* settings */ = {
+			isa = PBXGroup;
+			children = (
+				EF838F4024ABE07500A7DAAA /* settings.json */,
+				EF838F3C24ABDD2D00A7DAAA /* Settings.swift */,
+			);
+			path = settings;
+			sourceTree = "<group>";
+		};
 		EFD8EA4424A5CF6D00407555 /* core */ = {
 			isa = PBXGroup;
 			children = (
-				EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */,
+				EFFEE9AC24AAA0E5003829B8 /* constants */,
 				EFD8EA4524A5CF8200407555 /* RemoteTypes.swift */,
 				EF838F3424AABC3C00A7DAAA /* Errors.swift */,
+				EFF5949224ABE364003820DB /* Net.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -125,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				EFD8EA4324A5B9EF00407555 /* README.md */,
-				EFFEE9A924AA9BD6003829B8 /* resources */,
 				EFD964AB24A55D5600BCBB86 /* MyRemote */,
 				EFD964C124A55D5800BCBB86 /* MyRemoteTests */,
 				EFD964CC24A55D5800BCBB86 /* MyRemoteUITests */,
@@ -146,8 +159,8 @@
 		EFD964AB24A55D5600BCBB86 /* MyRemote */ = {
 			isa = PBXGroup;
 			children = (
+				EF838F3F24ABDF3300A7DAAA /* settings */,
 				EF838F3624AAE52000A7DAAA /* keyboard */,
-				EFFEE9AC24AAA0E5003829B8 /* constants */,
 				EFD8EA4424A5CF6D00407555 /* core */,
 				EFD964DC24A5908F00BCBB86 /* cec */,
 				EFD964DB24A5906F00BCBB86 /* ui */,
@@ -216,17 +229,10 @@
 			path = components;
 			sourceTree = "<group>";
 		};
-		EFFEE9A924AA9BD6003829B8 /* resources */ = {
-			isa = PBXGroup;
-			children = (
-				EFFEE9AA24AA9CAC003829B8 /* key_cfg.json */,
-			);
-			path = resources;
-			sourceTree = "<group>";
-		};
 		EFFEE9AC24AAA0E5003829B8 /* constants */ = {
 			isa = PBXGroup;
 			children = (
+				EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */,
 				EFD964DF24A5996500BCBB86 /* Constants.swift */,
 			);
 			path = constants;
@@ -336,9 +342,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFFEE9AB24AA9CAC003829B8 /* key_cfg.json in Resources */,
 				EFD964B724A55D5800BCBB86 /* Main.storyboard in Resources */,
 				EFD964B424A55D5800BCBB86 /* Preview Assets.xcassets in Resources */,
+				EF838F4124ABE07500A7DAAA /* settings.json in Resources */,
 				EFD964B124A55D5800BCBB86 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -373,7 +379,9 @@
 				EFD964AD24A55D5600BCBB86 /* AppDelegate.swift in Sources */,
 				EFD8EA4624A5CF8200407555 /* RemoteTypes.swift in Sources */,
 				EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */,
+				EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */,
 				EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */,
+				EFF5949324ABE364003820DB /* Net.swift in Sources */,
 				EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */,
 				EFD964E024A5996500BCBB86 /* Constants.swift in Sources */,
 				EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */,

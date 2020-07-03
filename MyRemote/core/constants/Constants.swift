@@ -65,6 +65,13 @@ struct Constants {
                                                     //        "escape"        : Buttons.Roku.?
                                                     ]
     
+    static let DEFAULT_KEYBINDS_CEC                 = [
+            "="             : Buttons.CEC.VOLUME_UP,
+            "-"             : Buttons.CEC.VOLUME_DOWN
+    //        "0"             : Buttons.Roku.MUTE,
+    //        "escape"        : Buttons.Roku.?
+    ]
+    
     static let DEFAULT_SETTINGS: Settings           = Settings(ipRoku: "",
                                                                ipPi: "",
                                                                keyboardMode: KeyboardMode.off)

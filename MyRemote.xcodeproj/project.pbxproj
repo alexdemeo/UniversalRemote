@@ -24,7 +24,7 @@
 		EFD964C324A55D5800BCBB86 /* MyRemoteTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964C224A55D5800BCBB86 /* MyRemoteTests.swift */; };
 		EFD964CE24A55D5800BCBB86 /* MyRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */; };
 		EFD964E024A5996500BCBB86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964DF24A5996500BCBB86 /* Constants.swift */; };
-		EFF5949324ABE364003820DB /* Net.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF5949224ABE364003820DB /* Net.swift */; };
+		EFF5949324ABE364003820DB /* RemoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF5949224ABE364003820DB /* RemoteButton.swift */; };
 		EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */; };
 		EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A024A703F3003829B8 /* ComponentTop.swift */; };
 		EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A424A89365003829B8 /* ComponentDevices.swift */; };
@@ -74,7 +74,7 @@
 		EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyRemoteUITests.swift; sourceTree = "<group>"; };
 		EFD964CF24A55D5800BCBB86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFD964DF24A5996500BCBB86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		EFF5949224ABE364003820DB /* Net.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Net.swift; sourceTree = "<group>"; };
+		EFF5949224ABE364003820DB /* RemoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteButton.swift; sourceTree = "<group>"; };
 		EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentArrows.swift; sourceTree = "<group>"; };
 		EFFEE9A024A703F3003829B8 /* ComponentTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTop.swift; sourceTree = "<group>"; };
 		EFFEE9A424A89365003829B8 /* ComponentDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDevices.swift; sourceTree = "<group>"; };
@@ -128,9 +128,9 @@
 			isa = PBXGroup;
 			children = (
 				EFFEE9AC24AAA0E5003829B8 /* constants */,
+				EFF5949224ABE364003820DB /* RemoteButton.swift */,
 				EFD8EA4524A5CF8200407555 /* RemoteTypes.swift */,
 				EF838F3424AABC3C00A7DAAA /* Errors.swift */,
-				EFF5949224ABE364003820DB /* Net.swift */,
 			);
 			path = core;
 			sourceTree = "<group>";
@@ -381,7 +381,7 @@
 				EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */,
 				EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */,
 				EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */,
-				EFF5949324ABE364003820DB /* Net.swift in Sources */,
+				EFF5949324ABE364003820DB /* RemoteButton.swift in Sources */,
 				EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */,
 				EFD964E024A5996500BCBB86 /* Constants.swift in Sources */,
 				EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */,

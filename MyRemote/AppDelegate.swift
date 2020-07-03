@@ -41,7 +41,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: {
             if self.settings.keyboardMode != .off && !self.displaySettingsPane.shown {
-                keyDown(keycode: $0.keyCode)
+                keyDown(keycode: $0.keyCode, mode: self.settings.keyboardMode)
                 return nil
             }
             return $0

@@ -18,9 +18,22 @@ struct RemoteButton {
     func exec() {
         switch self.type {
         case .roku:
-            RemoteButton.roku(endpoint: self.endpoint, args: [command])
+            RemoteButton.roku(endpoint: self.endpoint, args: [self.command])
         case .cec:
-            print("cec not yet implemented")
+            switch self.endpoint {
+            case .power:
+                return
+            case .volume:
+                // temporarily (until PC adapter arrives), volume will be a volume button press, rather than CEC volume change
+                RemoteButton.cec(endpoint: self.endpoint, args: [self.command], method: "POST")
+            case .key:
+                return
+            case .transmit:
+                return
+            case .keypress, .launch:
+                print("Somehow got CEC remote with Roku endpoint")
+                return
+            }
         }
     }
     
@@ -29,7 +42,7 @@ struct RemoteButton {
     }
     
     static func cec(endpoint: CommandEndpoint, args: [String], method: String) {
-        net(url: "http://\(AppDelegate.settings().ipPi):8080/\(endpoint)/\(args.joined(separator: "/"))", method: method)
+        net(url: "http://\(AppDelegate.settings().ipPi):5000/\(endpoint)/\(args.joined(separator: "/"))", method: method)
     }
     
     static private func net(url: String, method: String) {

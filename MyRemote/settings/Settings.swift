@@ -38,12 +38,19 @@ class Settings : ObservableObject { // this needs to be a reference type
     
     func save() {
         print("saving settings...")
+        self.printSettings()
+        
         let defaults = UserDefaults.standard
         defaults.set(self.ipRoku, forKey: "ipRoku")
         defaults.set(self.ipPi, forKey: "ipPi")
         defaults.set(self.keyboardMode.rawValue, forKey: "keyboardMode")
     }
     
+    func printSettings() {
+        print("\tipRoku=", self.ipRoku)
+        print("\tipPi=", self.ipPi)
+        print("\tkeyboardMode=", self.keyboardMode)
+    }
     
     static func load() -> Settings? {
         let defaults = UserDefaults.standard
@@ -58,10 +65,8 @@ class Settings : ObservableObject { // this needs to be a reference type
             let ipPi2 = defaults.string(forKey: "ipPi")!
             let keyboardMode2 = defaults.string(forKey: "keyboardMode")!
             let res = Settings(ipRoku: ipRoku2, ipPi: ipPi2, keyboardMode: KeyboardMode(rawValue: keyboardMode2)!)
-            print("loaded=\(res.ipRoku)")
-            print("\tipRoku=\(res.ipRoku)")
-            print("\tipPi=\(res.ipPi)")
-            print("\tkeyboardMode=\(res.keyboardMode)")
+            print("loaded=", res.ipRoku)
+            res.printSettings()
             return res
         }
     }

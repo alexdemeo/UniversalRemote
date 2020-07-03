@@ -5,8 +5,7 @@
 Roku commands send over Roku over built-in External Control Protocol:\
 &nbsp;&nbsp;&nbsp;&nbsp;https://developer.roku.com/docs/developer-program/debugging/external-control-api.md
 
-CEC commands sent to Rasperry Pi over network running:\
-&nbsp;&nbsp;&nbsp;&nbsp;https://robbie.io/cec-web/
+CEC commands sent to Rasperry Pi running local web server
 
 Requires hardcoding Roku and Pi IP address into the program.
 

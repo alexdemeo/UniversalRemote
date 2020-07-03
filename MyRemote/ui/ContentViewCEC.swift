@@ -12,9 +12,9 @@ struct ContentViewCEC: View {
     var body: some View {
         VStack(alignment: .center) {
             ComponentTop(buttonVolumeUp: Buttons.CEC.VOLUME_UP,
-            buttonVolumeDown: Buttons.CEC.VOLUME_DOWN,
-            buttonPower: Buttons.CEC.POWER,
-            buttonMute: Buttons.CEC.MUTE)
+                         buttonVolumeDown: Buttons.CEC.VOLUME_DOWN,
+                         buttonPower: Buttons.CEC.POWER,
+                         buttonMute: Buttons.CEC.MUTE)
         }
     }
 }

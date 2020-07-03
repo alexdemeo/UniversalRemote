@@ -39,9 +39,9 @@ struct Buttons {
     }
 
     struct CEC {
-        static let MUTE             = RemoteButton(type: .cec, symbol: "🔇", endpoint: .volume, command: "mute")
-        static let POWER            = RemoteButton(type: .cec, symbol: "🔌", endpoint: .power, command: "TV")
-        static let VOLUME_DOWN      = RemoteButton(type: .cec, symbol: "−", endpoint: .volume, command: "up")
-        static let VOLUME_UP        = RemoteButton(type: .cec, symbol: "＋", endpoint: .volume, command: "down")
+        static let MUTE             = RemoteButton(type: .cec, symbol: "🔇", endpoint: .volume, command: "")
+        static let POWER            = RemoteButton(type: .cec, symbol: "🔌", endpoint: .power, command: "")
+        static let VOLUME_UP        = RemoteButton(type: .cec, symbol: "＋", endpoint: .volume, command: "up")
+        static let VOLUME_DOWN      = RemoteButton(type: .cec, symbol: "−", endpoint: .volume, command: "down")
     }
 }

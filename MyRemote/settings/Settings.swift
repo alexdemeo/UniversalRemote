@@ -8,16 +8,12 @@
 
 import Foundation
 
-enum KeyboardMode: String, Codable {
-    case off = "off"
-    case roku = "roku"
-    case cec = "cec"
+enum KeyboardMode: String, Codable, CaseIterable {
+    case off, roku, cec
 }
 
 enum CodingKeys: CodingKey {
-    case ipRoku
-    case ipPi
-    case keyboardMode
+    case ipRoku, ipPi, keyboardMode
 }
 
 class Settings : ObservableObject { // this needs to be a reference type

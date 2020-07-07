@@ -203,8 +203,8 @@
 		EFD964DB24A5906F00BCBB86 /* ui */ = {
 			isa = PBXGroup;
 			children = (
-				EFD964AE24A55D5600BCBB86 /* ContentViewMain.swift */,
 				EFFEE99B24A70174003829B8 /* components */,
+				EFD964AE24A55D5600BCBB86 /* ContentViewMain.swift */,
 				EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */,
 				EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */,
 				EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */,

@@ -27,14 +27,6 @@ struct ContentViewSettings: View {
                         .frame(width: 90)
                 }
             }
-            VStack {
-                Text("Keyboard")
-                Picker("Keyboard", selection: $settings.keyboardMode) {
-                    Text("Off").tag(KeyboardMode.off)
-                    Text("Roku").tag(KeyboardMode.roku)
-                    Text("CEC").tag(KeyboardMode.cec)
-                    }.pickerStyle(RadioGroupPickerStyle()).labelsHidden()
-            }
         }
     }
 }
@@ -42,6 +34,7 @@ struct ContentViewSettings: View {
 struct ContentViewSettings_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewSettings()
-            .frame(width: Constants.REMOTE_WIDTH, height: Constants.WINDOW_HEIGHT / 5).environmentObject(Settings.load()!)
+//            .frame(width: Constants.REMOTE_WIDTH, height: Constants.WINDOW_HEIGHT / 5)
+            .environmentObject(Settings.load()!)
     }
 }

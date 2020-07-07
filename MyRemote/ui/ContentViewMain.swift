@@ -29,9 +29,15 @@ struct ContentViewMain: View {
                     ContentViewCEC()
                 }
             }
+            Divider()
+            Picker("Keyboard", selection: $settings.keyboardMode) {
+                Text("Keyboard Off").tag(KeyboardMode.off)
+                Text("Roku Keyboard").tag(KeyboardMode.roku)
+                Text("CEC Keyboard").tag(KeyboardMode.cec)
+            }.pickerStyle(SegmentedPickerStyle()).labelsHidden()
             if self.displaySettingsPane.shown {
-                Divider()
                 ContentViewSettings()
+                    .padding(.top)
             }
             HStack {
                 Button(action: {
@@ -48,8 +54,11 @@ struct ContentViewMain: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ContentViewMain_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewMain()
+            .environmentObject(AppDelegate.settings())
+            .environmentObject(AppDelegate.instance().displaySettingsPane)
+            .buttonStyle(BorderlessButtonStyle())
     }
 }

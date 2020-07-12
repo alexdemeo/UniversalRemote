@@ -15,6 +15,9 @@ struct ContentViewMain: View {
     @EnvironmentObject var displaySettingsPane: DisplaySettingsPane
     
     var body: some View {
+//        self.displaySettingsPane.shown = true
+        let command: String = latestRequest == nil ? "Ready" : latestRequest?.url?.absoluteString ?? "error"
+        let errormsg: String? = latestResponse?.1 != nil ? "\(String(describing: latestResponse!.1?.statusCode))" : nil
         return VStack {
             HStack {
                 if (self.debugRemote != nil) {
@@ -35,19 +38,22 @@ struct ContentViewMain: View {
                 Text("Roku Keyboard").tag(KeyboardMode.roku)
                 Text("CEC Keyboard").tag(KeyboardMode.cec)
             }.pickerStyle(SegmentedPickerStyle()).labelsHidden()
+           
+            ComponentStatus(command: command, errormsg: errormsg)
             if self.displaySettingsPane.shown {
-                ContentViewSettings()
-                    .padding(.top)
-            }
-            HStack {
+                ContentViewSettings().padding(.vertical)
                 Button(action: {
-                    if self.displaySettingsPane.shown {
-                        self.settings.save()
-                    }
+                    self.settings.save()
+                    self.displaySettingsPane.shown.toggle()
+                }) {
+                    Text("Save")
+                }.buttonStyle(DefaultButtonStyle())
+            } else {
+                Button(action: {
                     self.displaySettingsPane.shown.toggle()
                 }) {
                     Text("⚙")
-                }
+                }.padding(.top)
             }
         }
         .padding(.all)

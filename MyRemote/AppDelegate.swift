@@ -41,7 +41,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         self.popover.contentViewController = hostingController
         NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: {
             if self.settings.keyboardMode != .off && !self.displaySettingsPane.shown {
-                keyDown(keycode: $0.keyCode, mode: self.settings.keyboardMode)
+                keyDown(keycode: $0.keyCode,
+                        mode: self.settings.keyboardMode,
+                        shiftDown: $0.modifierFlags.intersection(.deviceIndependentFlagsMask).contains(.shift))
                 return nil
             }
             return $0

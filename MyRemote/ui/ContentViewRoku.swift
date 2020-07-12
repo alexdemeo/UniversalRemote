@@ -38,7 +38,7 @@ struct ContentViewRoku: View {
                 Button(action: Buttons.Roku.REFRESH.exec) { Text(Buttons.Roku.REFRESH.symbol) }
                     .scaleEffect(2.0)
                 Spacer().frame(width: Constants.CELL_WIDTH)
-                Button(action: {}) { Text(Buttons.Roku.ASTERISK.symbol) }.scaleEffect(2.0)
+                Button(action: Buttons.Roku.ASTERISK.exec) { Text(Buttons.Roku.ASTERISK.symbol) }.scaleEffect(2.0)
             }.padding(.bottom)
             HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH) {
                 Button(action: Buttons.Roku.REWIND.exec) { Text(Buttons.Roku.REWIND.symbol) }.scaleEffect(2.0)
@@ -78,6 +78,6 @@ struct ContentViewRoku: View {
 struct ContentViewRoku_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewRoku()
-            .buttonStyle(BorderlessButtonStyle()).frame(width: Constants.REMOTE_WIDTH, height: Constants.REMOTE_HEIGHT)
+            .buttonStyle(BorderlessButtonStyle())
     }
 }

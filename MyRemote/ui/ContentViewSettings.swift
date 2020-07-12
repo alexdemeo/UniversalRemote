@@ -34,7 +34,6 @@ struct ContentViewSettings: View {
 struct ContentViewSettings_Previews: PreviewProvider {
     static var previews: some View {
         ContentViewSettings()
-//            .frame(width: Constants.REMOTE_WIDTH, height: Constants.WINDOW_HEIGHT / 5)
             .environmentObject(Settings.load()!)
     }
 }

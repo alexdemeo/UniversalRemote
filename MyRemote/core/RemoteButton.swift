@@ -8,24 +8,30 @@
 
 import Foundation
 
+var latestRequest: URLRequest? = nil
+var latestResponse: (Data?, HTTPURLResponse?, Error?)? = nil
+
 struct RemoteButton {
     var type: RemoteType
     var symbol: String
     var endpoint: CommandEndpoint
     var command: String
-    var keyboardKey: String?
     
+    var commandStr: String {
+        "/\(self.endpoint)/\([self.command].joined(separator: "/"))"
+    }
+
     func exec() {
         switch self.type {
         case .roku:
-            RemoteButton.roku(endpoint: self.endpoint, args: [self.command])
+            self.roku()
         case .cec:
             switch self.endpoint {
             case .power:
                 return
             case .volume:
                 // temporarily (until PC adapter arrives), volume will be a volume button press, rather than CEC volume change
-                RemoteButton.cec(endpoint: self.endpoint, args: [self.command], method: "POST")
+                self.cec(method: "POST")
             case .key:
                 return
             case .transmit:
@@ -37,19 +43,21 @@ struct RemoteButton {
         }
     }
     
-    static func roku(endpoint: CommandEndpoint, args: [String]) {
-        net(url: "http://\(AppDelegate.settings().ipRoku):8060/\(endpoint)/\(args.joined(separator: "/"))", method: "POST")
+    private func roku() {
+        self.net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
     }
     
-    static func cec(endpoint: CommandEndpoint, args: [String], method: String) {
-        net(url: "http://\(AppDelegate.settings().ipPi):5000/\(endpoint)/\(args.joined(separator: "/"))", method: method)
+    private func cec(method: String) {
+        self.net(url: "http://\(AppDelegate.settings().ipPi):5000\(self.commandStr)", method: method)
     }
     
-    static private func net(url: String, method: String) {
+    private func net(url: String, method: String) {
         print("net(url: \(url), method: \(method))")
         var req = URLRequest(url: URL(string: url)!)
         req.httpMethod = method
+        latestRequest = req
         let task = URLSession.shared.dataTask(with: req) { data, response, error in
+            latestResponse = (data, response as? HTTPURLResponse, error)
             print("\tRESULT from: \(url)")
             print("\t\tdata=\(String(describing: data))")
             print("\t\tresponse=\(String(describing: response))")

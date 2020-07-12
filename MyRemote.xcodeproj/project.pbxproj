@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF15336824B6D52600D512F7 /* ComponentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336724B6D52600D512F7 /* ComponentStatus.swift */; };
+		EF15336C24B6DD3D00D512F7 /* RokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336B24B6DD3D00D512F7 /* RokuApp.swift */; };
 		EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3424AABC3C00A7DAAA /* Errors.swift */; };
 		EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3724AAE53100A7DAAA /* Listener.swift */; };
 		EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */; };
@@ -49,6 +51,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF15336724B6D52600D512F7 /* ComponentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentStatus.swift; sourceTree = "<group>"; };
+		EF15336B24B6DD3D00D512F7 /* RokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RokuApp.swift; sourceTree = "<group>"; };
 		EF838F3424AABC3C00A7DAAA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EF838F3724AAE53100A7DAAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
@@ -106,6 +110,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EF15336924B6DD2700D512F7 /* cec */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = cec;
+			sourceTree = "<group>";
+		};
+		EF15336A24B6DD2C00D512F7 /* roku */ = {
+			isa = PBXGroup;
+			children = (
+				EF15336B24B6DD3D00D512F7 /* RokuApp.swift */,
+			);
+			path = roku;
+			sourceTree = "<group>";
+		};
 		EF838F3624AAE52000A7DAAA /* keyboard */ = {
 			isa = PBXGroup;
 			children = (
@@ -159,10 +178,11 @@
 		EFD964AB24A55D5600BCBB86 /* MyRemote */ = {
 			isa = PBXGroup;
 			children = (
+				EF15336A24B6DD2C00D512F7 /* roku */,
+				EF15336924B6DD2700D512F7 /* cec */,
 				EF838F3F24ABDF3300A7DAAA /* settings */,
 				EF838F3624AAE52000A7DAAA /* keyboard */,
 				EFD8EA4424A5CF6D00407555 /* core */,
-				EFD964DC24A5908F00BCBB86 /* cec */,
 				EFD964DB24A5906F00BCBB86 /* ui */,
 				EFD964AC24A55D5600BCBB86 /* AppDelegate.swift */,
 				EFD964B024A55D5800BCBB86 /* Assets.xcassets */,
@@ -212,19 +232,13 @@
 			path = ui;
 			sourceTree = "<group>";
 		};
-		EFD964DC24A5908F00BCBB86 /* cec */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = cec;
-			sourceTree = "<group>";
-		};
 		EFFEE99B24A70174003829B8 /* components */ = {
 			isa = PBXGroup;
 			children = (
 				EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */,
 				EFFEE9A024A703F3003829B8 /* ComponentTop.swift */,
 				EFFEE9A424A89365003829B8 /* ComponentDevices.swift */,
+				EF15336724B6D52600D512F7 /* ComponentStatus.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -372,11 +386,13 @@
 			files = (
 				EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */,
 				EFD8EA3E24A5AE2E00407555 /* ContentViewCEC.swift in Sources */,
+				EF15336C24B6DD3D00D512F7 /* RokuApp.swift in Sources */,
 				EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */,
 				EFD964AF24A55D5600BCBB86 /* ContentViewMain.swift in Sources */,
 				EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */,
 				EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */,
 				EFD964AD24A55D5600BCBB86 /* AppDelegate.swift in Sources */,
+				EF15336824B6D52600D512F7 /* ComponentStatus.swift in Sources */,
 				EFD8EA4624A5CF8200407555 /* RemoteTypes.swift in Sources */,
 				EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */,
 				EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */,

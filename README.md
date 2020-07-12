@@ -11,3 +11,5 @@ Requires hardcoding Roku and Pi IP address into the program.
 
 TODO: Rather than hardcoding local devices, query Roku TV for devices on network
             & do this for CEC too, even though Roku is just doing the same thing under the hood
+            status light for latest command
+            

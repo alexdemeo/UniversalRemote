@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EF15336824B6D52600D512F7 /* ComponentStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336724B6D52600D512F7 /* ComponentStatus.swift */; };
+		EF04398B24CAA48F002EEDBB /* CompGroupedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */; };
+		EF15336824B6D52600D512F7 /* CompStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336724B6D52600D512F7 /* CompStatus.swift */; };
 		EF15336C24B6DD3D00D512F7 /* RokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336B24B6DD3D00D512F7 /* RokuApp.swift */; };
 		EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3424AABC3C00A7DAAA /* Errors.swift */; };
 		EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3724AAE53100A7DAAA /* Listener.swift */; };
 		EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */; };
 		EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3C24ABDD2D00A7DAAA /* Settings.swift */; };
 		EF838F4124ABE07500A7DAAA /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = EF838F4024ABE07500A7DAAA /* settings.json */; };
+		EF8EBEF924BEAFA8003FEF8A /* CompRokuDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8EBEF824BEAFA8003FEF8A /* CompRokuDevices.swift */; };
 		EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */; };
 		EFD8EA3E24A5AE2E00407555 /* ContentViewCEC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */; };
 		EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */; };
@@ -27,9 +29,9 @@
 		EFD964CE24A55D5800BCBB86 /* MyRemoteUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964CD24A55D5800BCBB86 /* MyRemoteUITests.swift */; };
 		EFD964E024A5996500BCBB86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD964DF24A5996500BCBB86 /* Constants.swift */; };
 		EFF5949324ABE364003820DB /* RemoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF5949224ABE364003820DB /* RemoteButton.swift */; };
-		EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */; };
-		EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A024A703F3003829B8 /* ComponentTop.swift */; };
-		EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A424A89365003829B8 /* ComponentDevices.swift */; };
+		EFFEE99F24A7024B003829B8 /* CompArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE99E24A7024B003829B8 /* CompArrows.swift */; };
+		EFFEE9A124A703F3003829B8 /* CompTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A024A703F3003829B8 /* CompTop.swift */; };
+		EFFEE9A524A89365003829B8 /* CompDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A424A89365003829B8 /* CompDevices.swift */; };
 		EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
@@ -51,13 +53,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		EF15336724B6D52600D512F7 /* ComponentStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentStatus.swift; sourceTree = "<group>"; };
+		EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompGroupedView.swift; sourceTree = "<group>"; };
+		EF15336724B6D52600D512F7 /* CompStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompStatus.swift; sourceTree = "<group>"; };
 		EF15336B24B6DD3D00D512F7 /* RokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RokuApp.swift; sourceTree = "<group>"; };
 		EF838F3424AABC3C00A7DAAA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EF838F3724AAE53100A7DAAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
 		EF838F3C24ABDD2D00A7DAAA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EF838F4024ABE07500A7DAAA /* settings.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = settings.json; sourceTree = "<group>"; };
+		EF8EBEF824BEAFA8003FEF8A /* CompRokuDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRokuDevices.swift; sourceTree = "<group>"; };
 		EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRoku.swift; sourceTree = "<group>"; };
 		EFD8EA3D24A5AE2E00407555 /* ContentViewCEC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewCEC.swift; sourceTree = "<group>"; };
 		EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewSettings.swift; sourceTree = "<group>"; };
@@ -79,9 +83,9 @@
 		EFD964CF24A55D5800BCBB86 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EFD964DF24A5996500BCBB86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EFF5949224ABE364003820DB /* RemoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteButton.swift; sourceTree = "<group>"; };
-		EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentArrows.swift; sourceTree = "<group>"; };
-		EFFEE9A024A703F3003829B8 /* ComponentTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentTop.swift; sourceTree = "<group>"; };
-		EFFEE9A424A89365003829B8 /* ComponentDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComponentDevices.swift; sourceTree = "<group>"; };
+		EFFEE99E24A7024B003829B8 /* CompArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompArrows.swift; sourceTree = "<group>"; };
+		EFFEE9A024A703F3003829B8 /* CompTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompTop.swift; sourceTree = "<group>"; };
+		EFFEE9A424A89365003829B8 /* CompDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompDevices.swift; sourceTree = "<group>"; };
 		EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,10 +239,12 @@
 		EFFEE99B24A70174003829B8 /* components */ = {
 			isa = PBXGroup;
 			children = (
-				EFFEE99E24A7024B003829B8 /* ComponentArrows.swift */,
-				EFFEE9A024A703F3003829B8 /* ComponentTop.swift */,
-				EFFEE9A424A89365003829B8 /* ComponentDevices.swift */,
-				EF15336724B6D52600D512F7 /* ComponentStatus.swift */,
+				EFFEE99E24A7024B003829B8 /* CompArrows.swift */,
+				EFFEE9A024A703F3003829B8 /* CompTop.swift */,
+				EFFEE9A424A89365003829B8 /* CompDevices.swift */,
+				EF15336724B6D52600D512F7 /* CompStatus.swift */,
+				EF8EBEF824BEAFA8003FEF8A /* CompRokuDevices.swift */,
+				EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -315,7 +321,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1150;
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1160;
 				ORGANIZATIONNAME = "Alex DeMeo";
 				TargetAttributes = {
 					EFD964A824A55D5600BCBB86 = {
@@ -384,7 +390,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFFEE99F24A7024B003829B8 /* ComponentArrows.swift in Sources */,
+				EFFEE99F24A7024B003829B8 /* CompArrows.swift in Sources */,
 				EFD8EA3E24A5AE2E00407555 /* ContentViewCEC.swift in Sources */,
 				EF15336C24B6DD3D00D512F7 /* RokuApp.swift in Sources */,
 				EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */,
@@ -392,15 +398,17 @@
 				EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */,
 				EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */,
 				EFD964AD24A55D5600BCBB86 /* AppDelegate.swift in Sources */,
-				EF15336824B6D52600D512F7 /* ComponentStatus.swift in Sources */,
+				EF15336824B6D52600D512F7 /* CompStatus.swift in Sources */,
 				EFD8EA4624A5CF8200407555 /* RemoteTypes.swift in Sources */,
 				EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */,
 				EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */,
-				EFFEE9A124A703F3003829B8 /* ComponentTop.swift in Sources */,
+				EFFEE9A124A703F3003829B8 /* CompTop.swift in Sources */,
+				EF04398B24CAA48F002EEDBB /* CompGroupedView.swift in Sources */,
+				EF8EBEF924BEAFA8003FEF8A /* CompRokuDevices.swift in Sources */,
 				EFF5949324ABE364003820DB /* RemoteButton.swift in Sources */,
 				EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */,
 				EFD964E024A5996500BCBB86 /* Constants.swift in Sources */,
-				EFFEE9A524A89365003829B8 /* ComponentDevices.swift in Sources */,
+				EFFEE9A524A89365003829B8 /* CompDevices.swift in Sources */,
 				EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -566,6 +574,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyRemote/MyRemote.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MyRemote/Preview Content\"";
@@ -587,6 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = MyRemote/MyRemote.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"MyRemote/Preview Content\"";

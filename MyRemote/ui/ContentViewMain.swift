@@ -13,11 +13,23 @@ struct ContentViewMain: View {
     
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var displaySettingsPane: DisplaySettingsPane
+    @EnvironmentObject var latestRequest: Request
+    @EnvironmentObject var latestResponse: Response
+    
+    private func sanitizeURL(url: String) -> String? {
+        if let regex = try? NSRegularExpression(pattern: "^http.*[0-9]", options: .caseInsensitive) {
+            return regex.stringByReplacingMatches(in: url, options: [], range: NSRange(location: 0, length:  url.count), withTemplate: "")
+        }
+        return nil
+    }
     
     var body: some View {
-//        self.displaySettingsPane.shown = true
-        let command: String = latestRequest == nil ? "Ready" : latestRequest?.url?.absoluteString ?? "error"
-        let errormsg: String? = latestResponse?.1 != nil ? "\(String(describing: latestResponse!.1?.statusCode))" : nil
+        let command: String = self.sanitizeURL(url: latestRequest.request?.url?.absoluteString ?? "") ?? "error"
+        var success = latestResponse.error == nil
+        if let resp = latestResponse.response {
+            success = success && resp.statusCode == 200
+        }
+        let msg = success ? nil : latestResponse.error?.localizedDescription
         return VStack {
             HStack {
                 if (self.debugRemote != nil) {
@@ -38,8 +50,7 @@ struct ContentViewMain: View {
                 Text("Roku Keyboard").tag(KeyboardMode.roku)
                 Text("CEC Keyboard").tag(KeyboardMode.cec)
             }.pickerStyle(SegmentedPickerStyle()).labelsHidden()
-           
-            ComponentStatus(command: command, errormsg: errormsg)
+            ComponentStatus(command: command, msg: msg, success: success, statusCode: latestResponse.response?.statusCode ?? -1)
             if self.displaySettingsPane.shown {
                 ContentViewSettings().padding(.vertical)
                 Button(action: {
@@ -53,7 +64,7 @@ struct ContentViewMain: View {
                     self.displaySettingsPane.shown.toggle()
                 }) {
                     Text("⚙")
-                }.padding(.top)
+                }
             }
         }
         .padding(.all)
@@ -65,6 +76,8 @@ struct ContentViewMain_Previews: PreviewProvider {
         ContentViewMain()
             .environmentObject(AppDelegate.settings())
             .environmentObject(AppDelegate.instance().displaySettingsPane)
+            .environmentObject(AppDelegate.instance().latestRequest)
+            .environmentObject(AppDelegate.instance().latestResponse)
             .buttonStyle(BorderlessButtonStyle())
     }
 }

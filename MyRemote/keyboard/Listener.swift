@@ -29,11 +29,11 @@ func keyRoku(key: String, shiftDown: Bool) {
     } else {
         if key.count == 1 && "abcdefghijklmnopqrstuvwxyz1234567890".contains(key) {
             let sentKey = shiftDown ? key.uppercased() : key
-            RemoteButton(type: .roku, symbol: key, endpoint: .keypress, command: "Lit_\(sentKey)").exec()
+            RemoteButton(forType: .roku, symbol: key, endpoint: .keypress, command: "Lit_\(sentKey)").exec()
         } else if key == "space" {
-            RemoteButton(type: .roku, symbol: key, endpoint: .keypress, command: "Lit_%20").exec()
+            RemoteButton(forType: .roku, symbol: key, endpoint: .keypress, command: "Lit_%20").exec()
         } else if key == "backspace" {
-            RemoteButton(type: .roku, symbol: key, endpoint: .keypress, command: "Backspace").exec()
+            RemoteButton(forType: .roku, symbol: key, endpoint: .keypress, command: "Backspace").exec()
         }
     }
 }

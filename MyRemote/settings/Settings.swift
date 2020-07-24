@@ -23,8 +23,16 @@ class Settings : ObservableObject { // this needs to be a reference type
     
     private static let path = URL(fileURLWithPath: "settings.json")
     private static let firstTimeKey = "firstTime"
+
+    var rokuBaseURL: String {
+        "http://\(AppDelegate.settings().ipRoku):8060"
+    }
     
-    
+    var cecBaseURL: String {
+        "http://\(AppDelegate.settings().ipPi):5000"
+    }
+//    AppDelegate.instance().net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
+
     init(ipRoku: String, ipPi: String, keyboardMode: KeyboardMode) {
         self.ipRoku = ipRoku
         self.ipPi = ipPi

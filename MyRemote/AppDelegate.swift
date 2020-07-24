@@ -13,6 +13,16 @@ class DisplaySettingsPane: ObservableObject {
     @Published var shown: Bool = false
 }
 
+class Request: ObservableObject {
+    @Published var request: URLRequest? = nil
+}
+
+class Response: ObservableObject {
+    @Published var data: Data? = nil
+    @Published var response: HTTPURLResponse? = nil
+    @Published var error: Error? = nil
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     var window: NSWindow!
@@ -25,6 +35,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     let rightClickMenu: NSMenu = NSMenu()
     
+    var latestRequest: Request = Request()
+    var latestResponse: Response = Response()
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         rightClickMenu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: ""))
         if let button = self.statusItem.button {
@@ -33,11 +46,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         self.popover.behavior = .transient
-        let hostingController = NSHostingController(rootView: ContentViewMain()
-            .environmentObject(self.settings)
-            .environmentObject(self.displaySettingsPane)
-            .buttonStyle(BorderlessButtonStyle())
-        )
+        let hostingController = NSHostingController(rootView:
+            ContentViewMain()
+                .environmentObject(self.settings)
+                .environmentObject(self.displaySettingsPane)
+                .environmentObject(self.latestRequest)
+                .environmentObject(self.latestResponse)
+                .buttonStyle(BorderlessButtonStyle()))
+        
         self.popover.contentViewController = hostingController
         NSEvent.addLocalMonitorForEvents(matching: .keyDown, handler: {
             if self.settings.keyboardMode != .off && !self.displaySettingsPane.shown {
@@ -73,7 +89,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
@@ -85,6 +100,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     static func settings() -> Settings {
         return AppDelegate.instance().settings
     }
+    
+    func net(url: String, method: String) {
+        print("net(url: \(url), method: \(method))")
+        var req = URLRequest(url: URL(string: url)!)
+        req.httpMethod = method
+        let task = URLSession.shared.dataTask(with: req) { data, response, error in
+            DispatchQueue.main.async {
+                self.latestRequest.request = req // this is here so status update changes on reply
+                self.latestResponse.data = data
+                self.latestResponse.response = response as? HTTPURLResponse
+                self.latestResponse.error = error
+            }
+            print("Result from: \(url) statusCode: \(String(describing: self.latestResponse.response?.statusCode))")
+        }
+        task.resume()
+    }
 }
 
 
@@ -93,10 +124,15 @@ struct AppDelegate_Previews: PreviewProvider {
     
     static var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
     
+    static var latestRequest: Request = Request()
+    static var latestResponse: Response = Response()
+    
     static var previews: some View {
         ContentViewMain()
             .environmentObject(settings)
             .environmentObject(displaySettingsPane)
+            .environmentObject(latestRequest)
+            .environmentObject(latestResponse)
             .buttonStyle(BorderlessButtonStyle())
     }
 }

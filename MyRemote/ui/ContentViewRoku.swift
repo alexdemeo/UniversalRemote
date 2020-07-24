@@ -45,32 +45,7 @@ struct ContentViewRoku: View {
                 Button(action: Buttons.Roku.PLAY_PLAUSE.exec) { Text(Buttons.Roku.PLAY_PLAUSE.symbol) }.scaleEffect(2.0)
                 Button(action: Buttons.Roku.FORWARD.exec) { Text(Buttons.Roku.FORWARD.symbol) }.scaleEffect(2.0)
             }.padding(.bottom)
-            HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH * 2) {
-                Button(action: Buttons.Roku.NETFLIX.exec) {
-                    Text(Buttons.Roku.NETFLIX.symbol).alignmentGuide(.leading) { dimension in
-                        dimension[.leading]
-                    }
-                }.scaleEffect(2.0)
-                Button(action: Buttons.Roku.HULU.exec) { Text(Buttons.Roku.HULU.symbol) }
-                    .scaleEffect(2.0).alignmentGuide(.trailing) { dimension in
-                        dimension[.trailing]
-                }
-            }
-            HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH * 2) {
-                Button(action: Buttons.Roku.SPOTIFY.exec) { Text(Buttons.Roku.SPOTIFY.symbol) }
-                    .scaleEffect(2.0).alignmentGuide(.leading) { dimension in
-                        dimension[.leading]
-                }
-                Button(action: Buttons.Roku.YOUTUBE.exec ) { Text(Buttons.Roku.YOUTUBE.symbol) }
-                    .scaleEffect(2.0).alignmentGuide(.trailing) { dimension in
-                        dimension[.trailing]
-                }
-            }
-            HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH) {
-                Button(action: Buttons.Roku.DEV_PC.exec) { Text(Buttons.Roku.DEV_PC.symbol) }.scaleEffect(2.0)
-                Button(action: Buttons.Roku.DEV_PI2.exec) { Text(Buttons.Roku.DEV_PI2.symbol) }.scaleEffect(2.0)
-                Button(action: Buttons.Roku.DEV_AVR.exec) { Text(Buttons.Roku.DEV_AVR.symbol) }.scaleEffect(2.0)
-            }.padding(.vertical)
+            ComponentRokuDevices().padding(.bottom)
         }.padding(.top)
     }
 }

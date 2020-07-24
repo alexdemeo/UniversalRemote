@@ -72,6 +72,8 @@ struct Constants {
     //        "escape"        : Buttons.Roku.?
     ]
     
+    static let VOL_MAX = 100
+    
     static let DEFAULT_SETTINGS: Settings           = Settings(ipRoku: "",
                                                                ipPi: "",
                                                                keyboardMode: KeyboardMode.off)

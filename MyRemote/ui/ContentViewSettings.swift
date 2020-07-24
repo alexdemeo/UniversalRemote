@@ -27,6 +27,9 @@ struct ContentViewSettings: View {
                         .frame(width: 90)
                 }
             }
+            VStack {
+                Text("")
+            }
         }
     }
 }

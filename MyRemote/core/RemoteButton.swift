@@ -8,19 +8,31 @@
 
 import Foundation
 
-var latestRequest: URLRequest? = nil
-var latestResponse: (Data?, HTTPURLResponse?, Error?)? = nil
-
-struct RemoteButton {
-    var type: RemoteType
-    var symbol: String
-    var endpoint: CommandEndpoint
-    var command: String
+struct RemoteButton : Identifiable {
+    let type: RemoteType
+    let symbol: String
+    let endpoint: CommandEndpoint
+    let command: String
+    let id: String
+    let associatedApp: RokuApp?
     
-    var commandStr: String {
+    init(forType type: RemoteType, symbol: String, endpoint: CommandEndpoint, command: String) {
+        self.init(forType: type, symbol: symbol, endpoint: endpoint, command: command, associatedApp: nil)
+    }
+    
+    init(forType type: RemoteType, symbol: String, endpoint: CommandEndpoint, command: String, associatedApp: RokuApp?) {
+        self.type = type
+        self.symbol = symbol
+        self.endpoint = endpoint
+        self.command = command
+        self.id = symbol
+        self.associatedApp = associatedApp
+    }
+    
+    private var commandStr: String {
         "/\(self.endpoint)/\([self.command].joined(separator: "/"))"
     }
-
+    
     func exec() {
         switch self.type {
         case .roku:
@@ -44,25 +56,17 @@ struct RemoteButton {
     }
     
     private func roku() {
-        self.net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
+        AppDelegate.instance().net(url: "\(AppDelegate.settings().rokuBaseURL)\(self.commandStr)", method: "POST")
     }
     
     private func cec(method: String) {
-        self.net(url: "http://\(AppDelegate.settings().ipPi):5000\(self.commandStr)", method: method)
+        AppDelegate.instance().net(url: "\(AppDelegate.settings().cecBaseURL)\(self.commandStr)", method: method)
     }
     
-    private func net(url: String, method: String) {
-        print("net(url: \(url), method: \(method))")
-        var req = URLRequest(url: URL(string: url)!)
-        req.httpMethod = method
-        latestRequest = req
-        let task = URLSession.shared.dataTask(with: req) { data, response, error in
-            latestResponse = (data, response as? HTTPURLResponse, error)
-            print("\tRESULT from: \(url)")
-            print("\t\tdata=\(String(describing: data))")
-            print("\t\tresponse=\(String(describing: response))")
-            print("\t\terror=\(String(describing: error))")
-        }
-        task.resume()
+    static func getRokuButtons() -> [RemoteButton] {
+        let apps = RokuApp.getApps()
+        return apps.map({
+            RemoteButton(forType: .roku, symbol: $0.name, endpoint: .launch, command: $0.id, associatedApp: $0)
+        })
     }
 }

@@ -15,13 +15,8 @@ struct ContentViewMain: View {
     @EnvironmentObject var displaySettingsPane: DisplaySettingsPane
     @EnvironmentObject var latestRequest: Request
     @EnvironmentObject var latestResponse: Response
-    
-    let buttons: [RemoteButton]
-    
-    init(buttons: [RemoteButton]) {
-        self.buttons = buttons
-    }
-    
+    @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
+
     var body: some View {
         let command: String = AppDelegate.sanitizeURL(url: latestRequest.request?.url?.absoluteString ?? "") ?? "error"
         var success = latestResponse.error == nil
@@ -34,12 +29,12 @@ struct ContentViewMain: View {
             HStack {
                 if (self.debugRemote != nil) {
                     if self.debugRemote! == .roku {
-                        ContentViewRoku(buttons: self.buttons)
+                        ContentViewRoku()
                     } else {
                         ContentViewCEC()
                     }
                 } else {
-                    ContentViewRoku(buttons: self.buttons)
+                    ContentViewRoku()
                     Divider().padding(.horizontal)
                     ContentViewCEC()
                 }
@@ -56,6 +51,7 @@ struct ContentViewMain: View {
                 Button(action: {
                     self.settings.save()
                     self.displaySettingsPane.shown.toggle()
+                    self.rokuChannelButtons.sendRefreshRequest()
                 }) {
                     Text("Save")
                 }.buttonStyle(DefaultButtonStyle())
@@ -73,11 +69,12 @@ struct ContentViewMain: View {
 
 struct ContentViewMain_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewMain(buttons: RemoteButton.getRokuButtons())
-            .environmentObject(AppDelegate.settings())
-            .environmentObject(AppDelegate.instance().displaySettingsPane)
-            .environmentObject(AppDelegate.instance().latestRequest)
-            .environmentObject(AppDelegate.instance().latestResponse)
+        ContentViewMain()
+            .environmentObject(AppDelegate.settings)
+            .environmentObject(AppDelegate.instance.displaySettingsPane)
+            .environmentObject(AppDelegate.instance.latestRequest)
+            .environmentObject(AppDelegate.instance.latestResponse)
+            .environmentObject(AppDelegate.instance.rokuChannelButtons)
             .buttonStyle(BorderlessButtonStyle())
     }
 }

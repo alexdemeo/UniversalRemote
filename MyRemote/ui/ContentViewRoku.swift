@@ -9,8 +9,8 @@
 import SwiftUI
 
 struct ContentViewRoku: View {
-    let buttons: [RemoteButton]
-    
+    @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
+
     var body: some View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL) {
             ComponentTop(buttonVolumeUp: Buttons.Roku.VOLUME_UP,
@@ -47,14 +47,15 @@ struct ContentViewRoku: View {
                 Button(action: Buttons.Roku.PLAY_PLAUSE.exec) { Text(Buttons.Roku.PLAY_PLAUSE.symbol) }.scaleEffect(2.0)
                 Button(action: Buttons.Roku.FORWARD.exec) { Text(Buttons.Roku.FORWARD.symbol) }.scaleEffect(2.0)
             }.padding(.bottom)
-            ComponentRokuDevices(buttons: self.buttons).padding(.bottom)
+            ComponentRokuDevices().padding(.bottom)
         }.padding(.top)
     }
 }
 
 struct ContentViewRoku_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewRoku(buttons: RemoteButton.getRokuButtons())
+        ContentViewRoku()
+            .environmentObject(AppDelegate.instance.rokuChannelButtons)
             .buttonStyle(BorderlessButtonStyle())
     }
 }

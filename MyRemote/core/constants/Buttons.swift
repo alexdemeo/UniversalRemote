@@ -32,10 +32,10 @@ struct Buttons {
         static let DEV_PI2          = RemoteButton(forType: .roku, symbol: "pi2", endpoint: .keypress, command: "InputHDMI2")
         static let DEV_PC           = RemoteButton(forType: .roku, symbol: "PC", endpoint: .keypress, command: "InputHDMI3")
         
-        static let CHAN_NETFLIX          = RemoteButton(forType: .roku, symbol: "Netflix", endpoint: .launch, command: "12")
-        static let CHAN_HULU             = RemoteButton(forType: .roku, symbol: "Hulu", endpoint: .launch, command: "2285")
-        static let CHAN_YOUTUBE          = RemoteButton(forType: .roku, symbol: "YouTube", endpoint: .launch, command: "837")
-        static let CHAN_SPOTIFY          = RemoteButton(forType: .roku, symbol: "Spotify", endpoint: .launch, command: "19977")
+        static let CHAN_NETFLIX     = RemoteButton(forType: .roku, symbol: "Netflix", endpoint: .launch, command: "12")
+        static let CHAN_HULU        = RemoteButton(forType: .roku, symbol: "Hulu", endpoint: .launch, command: "2285")
+        static let CHAN_YOUTUBE     = RemoteButton(forType: .roku, symbol: "YouTube", endpoint: .launch, command: "837")
+        static let CHAN_SPOTIFY     = RemoteButton(forType: .roku, symbol: "Spotify", endpoint: .launch, command: "19977")
     }
 
     struct CEC {

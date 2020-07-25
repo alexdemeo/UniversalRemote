@@ -26,11 +26,11 @@ class Settings : ObservableObject { // this needs to be a reference type
     private static let firstTimeKey = "firstTime"
 
     var rokuBaseURL: String {
-        "http://\(AppDelegate.settings().ipRoku):8060"
+        "http://\(AppDelegate.settings.ipRoku):8060"
     }
     
     var cecBaseURL: String {
-        "http://\(AppDelegate.settings().ipPi):5000"
+        "http://\(AppDelegate.settings.ipPi):5000"
     }
 //    AppDelegate.instance().net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
 
@@ -54,10 +54,10 @@ class Settings : ObservableObject { // this needs to be a reference type
     }
     
     func printSettings() {
-        print("\tipRoku=", self.ipRoku)
-        print("\tipPi=", self.ipPi)
-        print("\tkeyboardMode=", self.keyboardMode)
-        print("\tvolume=", self.volume)
+        print("\tipRoku=\(self.ipRoku)")
+        print("\tipPi=\(self.ipPi)")
+        print("\tkeyboardMode=\(self.keyboardMode)")
+        print("\tvolume=\(self.volume)")
     }
     
     static func load() -> Settings? {

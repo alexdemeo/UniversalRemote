@@ -78,6 +78,8 @@ struct Constants {
                                                                ipPi: "",
                                                                keyboardMode: KeyboardMode.off,
                                                                volume: 0)
+    
+    static let ROKU_APP_QUERY_TIMEOUT_SECONDS: Int  = 5
         
     /**************** Inferred constants ******************/
     

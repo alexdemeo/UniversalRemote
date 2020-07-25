@@ -56,6 +56,7 @@
 		EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompGroupedView.swift; sourceTree = "<group>"; };
 		EF15336724B6D52600D512F7 /* CompStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompStatus.swift; sourceTree = "<group>"; };
 		EF15336B24B6DD3D00D512F7 /* RokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RokuApp.swift; sourceTree = "<group>"; };
+		EF7BACE824CCE84800CCCBCF /* build_and_export.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = build_and_export.sh; sourceTree = "<group>"; };
 		EF838F3424AABC3C00A7DAAA /* Errors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EF838F3724AAE53100A7DAAA /* Listener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Listener.swift; sourceTree = "<group>"; };
 		EF838F3A24AAEA9E00A7DAAA /* Keycode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keycode.swift; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 		EFD964A024A55D5600BCBB86 = {
 			isa = PBXGroup;
 			children = (
+				EF7BACE824CCE84800CCCBCF /* build_and_export.sh */,
 				EFD8EA4324A5B9EF00407555 /* README.md */,
 				EFD964AB24A55D5600BCBB86 /* MyRemote */,
 				EFD964C124A55D5800BCBB86 /* MyRemoteTests */,

@@ -45,7 +45,7 @@ struct ComponentGroupedView: View {
 
 struct ComponentGroupedView_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentRokuDevices(buttons: RemoteButton.getRokuButtons())
+        ComponentRokuDevices()
 //        ComponentGroupedView(
 //            Array(0...10).map({ i in
 //                AnyView(Text("\(i)"))

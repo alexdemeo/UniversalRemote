@@ -23,6 +23,18 @@ class Response: ObservableObject {
     @Published var error: Error? = nil
 }
 
+class ObservedRokuButtons: ObservableObject {
+    @Published var array = [RemoteButton]()
+    
+    func sendRefreshRequest() {
+        AppDelegate.instance.netAsync(url: "\(AppDelegate.settings.rokuBaseURL)/query/apps", method: "GET")
+    }
+    
+    func updateFor(array: [RemoteButton]) {
+        self.array = array
+    }
+}
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
@@ -33,9 +45,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var button: NSStatusBarButton!
     var settings: Settings = Settings.load()!
     var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
-    var rokuChannelButtons: [RemoteButton] = []
     var latestRequest: Request = Request()
     var latestResponse: Response = Response()
+    var rokuChannelButtons: ObservedRokuButtons = ObservedRokuButtons()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         rightClickMenu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: ""))
@@ -45,13 +57,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         self.popover.behavior = .transient
-        self.rokuChannelButtons = RemoteButton.getRokuButtons()
+        self.rokuChannelButtons.sendRefreshRequest()
         let hostingController = NSHostingController(rootView:
-            ContentViewMain(buttons: self.rokuChannelButtons)
+            ContentViewMain()
                 .environmentObject(self.settings)
                 .environmentObject(self.displaySettingsPane)
                 .environmentObject(self.latestRequest)
                 .environmentObject(self.latestResponse)
+                .environmentObject(self.rokuChannelButtons)
                 .buttonStyle(BorderlessButtonStyle()))
         
         self.popover.contentViewController = hostingController
@@ -89,19 +102,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
+    func applicationWillTerminate(_ aNotification: Notification) {}
     
-    static func instance() -> AppDelegate {
-        return NSApplication.shared.delegate as! AppDelegate
-    }
-    
-    static func settings() -> Settings {
-        return AppDelegate.instance().settings
-    }
-    
-    func net(url: String, method: String) {
+    func netAsync(url: String, method: String) {
         print("net(url: \(url), method: \(method))")
         var req = URLRequest(url: URL(string: url)!)
         req.httpMethod = method
@@ -111,50 +114,80 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.latestResponse.data = data
                 self.latestResponse.response = response as? HTTPURLResponse
                 self.latestResponse.error = error
-                
-                let endpoint = AppDelegate.sanitizeURL(url: url)
-                if let e = endpoint {
-                    if !e.matches(for: "^(?i)\\/(keypress)?\\/?volume\\/?(up|down)$").isEmpty {
-                        // if it's a volume endpoint
-                        if e.lowercased().contains("up") {
-                            self.settings.volume += 1
-                            print("RECEIVE UP += \(self.settings.volume)")
-                        } else if e.lowercased().contains("down") {
-                            print("RECEIVE DOWN -= \(self.settings.volume)")
-                            self.settings.volume -= 1
-                        }
-                        
-                    }
+                guard let endpoint = AppDelegate.sanitizeURL(url: url) else {
+                    return
                 }
-                print("Result from: \(url) statusCode: \(String(describing: self.latestResponse.response?.statusCode))")
+                guard let response = self.latestResponse.response else {
+                    return
+                }
+                self.handleAsyncRokuResponseFrom(endpoint: endpoint, withResponse: response)
+                print("Result from: \(url) statusCode: \(self.latestResponse.response?.statusCode ?? -1)")
             }
         }
         task.resume()
     }
     
-    static func sanitizeURL(url: String) -> String? {
-        if let regex = try? NSRegularExpression(pattern: "^http.*[0-9]", options: .caseInsensitive) {
-            return regex.stringByReplacingMatches(in: url, options: [], range: NSRange(location: 0, length:  url.count), withTemplate: "")
+    func handleAsyncRokuResponseFrom(endpoint e: String, withResponse response: HTTPURLResponse) {
+        if !e.matches(for: "^(?i)\\/(keypress)?\\/?volume\\/?(up|down)$").isEmpty
+            && response.statusCode == 200 {
+            // if it's a volume endpoint
+            if e.lowercased().contains("up") {
+                self.settings.volume += 1
+                print("volume + 1 = \(self.settings.volume)")
+            } else if e.lowercased().contains("down") {
+                print("volume - 1 = \(self.settings.volume)")
+                self.settings.volume -= 1
+            }
+            
+        } else if !e.matches(for: "^/query/apps$").isEmpty {
+            var apps: [RokuApp] = []
+            if let data = self.latestResponse.data {
+                let info = String(data: data, encoding: .utf8)
+                apps = info!.matches(for: "<app.*<\\/app>").map({
+                    RokuApp(line: $0)
+                })
+            }
+            print("Made buttons for apps:\n\(apps.map({"\t\($0)"}).joined(separator: "\n"))")
+            let buttons = apps.map({
+                RemoteButton(forType: .roku, symbol: $0.name, endpoint: .launch, command: $0.id, associatedApp: $0)
+            })
+            self.rokuChannelButtons.updateFor(array: buttons)
         }
-        return nil
+    }
+    
+    func netSync(url: String, method: String) -> (Data?, HTTPURLResponse?, Error?)? {
+        let s = DispatchSemaphore(value: 0)
+        var req = URLRequest(url: URL(string: url)!)
+        req.httpMethod = method
+        var result: (Data?, HTTPURLResponse?, Error?) = (nil, nil, nil)
+        let task = URLSession.shared.dataTask(with: req) { data, response, error in
+            result = (data, response as? HTTPURLResponse, error)
+            s.signal()
+        }
+        task.resume()
+        let waitResult = s.wait(timeout: DispatchTime.now() + DispatchTimeInterval.seconds(Constants.ROKU_APP_QUERY_TIMEOUT_SECONDS))
+        return waitResult == .success ? result : nil
+    }
+    
+    static var instance: AppDelegate {
+        NSApplication.shared.delegate as! AppDelegate
+    }
+    
+    static var settings: Settings {
+        AppDelegate.instance.settings
+    }
+    
+    static func sanitizeURL(url: String) -> String? {
+        guard let regex = try? NSRegularExpression(pattern: "^http.*[0-9]", options: .caseInsensitive) else {
+            return nil
+        }
+        return regex.stringByReplacingMatches(in: url, options: [], range: NSRange(location: 0, length:  url.count), withTemplate: "")
     }
 }
 
 
 struct AppDelegate_Previews: PreviewProvider {
-    static var settings: Settings = Settings.load()!
-    
-    static var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
-    
-    static var latestRequest: Request = Request()
-    static var latestResponse: Response = Response()
-    
     static var previews: some View {
-        ContentViewMain(buttons: RemoteButton.getRokuButtons())
-            .environmentObject(settings)
-            .environmentObject(displaySettingsPane)
-            .environmentObject(latestRequest)
-            .environmentObject(latestResponse)
-            .buttonStyle(BorderlessButtonStyle())
+        ContentViewMain_Previews.previews
     }
 }

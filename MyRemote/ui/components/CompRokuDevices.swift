@@ -9,19 +9,24 @@
 import SwiftUI
 
 struct ComponentRokuDevices: View {
-    let buttons: [RemoteButton]
-    
+    @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
+
     var body: some View {
-        ComponentGroupedView(self.buttons.map({ btn in
-            AnyView(Button(action: btn.exec) {
-                btn.associatedApp!.view.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL).scaledToFit()
-            })
-        }))
+        if self.rokuChannelButtons.array.isEmpty {
+            return AnyView(Text("Couldn't load roku apps. Check IP"))
+        } else {
+            return AnyView(ComponentGroupedView(self.rokuChannelButtons.array.map({ btn in
+                AnyView(Button(action: btn.exec) {
+                    btn.associatedApp!.view.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL).scaledToFit()
+                })
+            })))
+        }
     }
 }
 
 struct ComponentRokuDevices_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentRokuDevices(buttons: RemoteButton.getRokuButtons())
+        ComponentRokuDevices()
+            .environmentObject(AppDelegate.instance.rokuChannelButtons)
     }
 }

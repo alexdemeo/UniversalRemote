@@ -25,16 +25,15 @@ class Response: ObservableObject {
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-    var window: NSWindow!
-    var button: NSStatusBarButton!
-    
     let statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
     let popover: NSPopover = NSPopover()
-    var settings: Settings = Settings.load()!
-    var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
-    
     let rightClickMenu: NSMenu = NSMenu()
     
+    var window: NSWindow!
+    var button: NSStatusBarButton!
+    var settings: Settings = Settings.load()!
+    var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
+    var rokuChannelButtons: [RemoteButton] = []
     var latestRequest: Request = Request()
     var latestResponse: Response = Response()
     
@@ -46,8 +45,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         self.popover.behavior = .transient
+        self.rokuChannelButtons = RemoteButton.getRokuButtons()
         let hostingController = NSHostingController(rootView:
-            ContentViewMain()
+            ContentViewMain(buttons: self.rokuChannelButtons)
                 .environmentObject(self.settings)
                 .environmentObject(self.displaySettingsPane)
                 .environmentObject(self.latestRequest)
@@ -111,10 +111,32 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 self.latestResponse.data = data
                 self.latestResponse.response = response as? HTTPURLResponse
                 self.latestResponse.error = error
+                
+                let endpoint = AppDelegate.sanitizeURL(url: url)
+                if let e = endpoint {
+                    if !e.matches(for: "^(?i)\\/(keypress)?\\/?volume\\/?(up|down)$").isEmpty {
+                        // if it's a volume endpoint
+                        if e.lowercased().contains("up") {
+                            self.settings.volume += 1
+                            print("RECEIVE UP += \(self.settings.volume)")
+                        } else if e.lowercased().contains("down") {
+                            print("RECEIVE DOWN -= \(self.settings.volume)")
+                            self.settings.volume -= 1
+                        }
+                        
+                    }
+                }
+                print("Result from: \(url) statusCode: \(String(describing: self.latestResponse.response?.statusCode))")
             }
-            print("Result from: \(url) statusCode: \(String(describing: self.latestResponse.response?.statusCode))")
         }
         task.resume()
+    }
+    
+    static func sanitizeURL(url: String) -> String? {
+        if let regex = try? NSRegularExpression(pattern: "^http.*[0-9]", options: .caseInsensitive) {
+            return regex.stringByReplacingMatches(in: url, options: [], range: NSRange(location: 0, length:  url.count), withTemplate: "")
+        }
+        return nil
     }
 }
 
@@ -128,7 +150,7 @@ struct AppDelegate_Previews: PreviewProvider {
     static var latestResponse: Response = Response()
     
     static var previews: some View {
-        ContentViewMain()
+        ContentViewMain(buttons: RemoteButton.getRokuButtons())
             .environmentObject(settings)
             .environmentObject(displaySettingsPane)
             .environmentObject(latestRequest)

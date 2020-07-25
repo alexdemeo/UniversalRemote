@@ -76,7 +76,8 @@ struct Constants {
     
     static let DEFAULT_SETTINGS: Settings           = Settings(ipRoku: "",
                                                                ipPi: "",
-                                                               keyboardMode: KeyboardMode.off)
+                                                               keyboardMode: KeyboardMode.off,
+                                                               volume: 0)
         
     /**************** Inferred constants ******************/
     

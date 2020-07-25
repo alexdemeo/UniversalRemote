@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct ComponentRokuDevices: View {
-    private let buttons: [RemoteButton] = RemoteButton.getRokuButtons()
+    let buttons: [RemoteButton]
     
     var body: some View {
         ComponentGroupedView(self.buttons.map({ btn in
@@ -22,6 +22,6 @@ struct ComponentRokuDevices: View {
 
 struct ComponentRokuDevices_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentRokuDevices()
+        ComponentRokuDevices(buttons: RemoteButton.getRokuButtons())
     }
 }

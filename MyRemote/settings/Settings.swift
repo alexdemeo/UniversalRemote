@@ -20,6 +20,7 @@ class Settings : ObservableObject { // this needs to be a reference type
     @Published var ipRoku: String
     @Published var ipPi: String
     @Published var keyboardMode: KeyboardMode
+    @Published var volume: Int
     
     private static let path = URL(fileURLWithPath: "settings.json")
     private static let firstTimeKey = "firstTime"
@@ -33,10 +34,11 @@ class Settings : ObservableObject { // this needs to be a reference type
     }
 //    AppDelegate.instance().net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
 
-    init(ipRoku: String, ipPi: String, keyboardMode: KeyboardMode) {
+    init(ipRoku: String, ipPi: String, keyboardMode: KeyboardMode, volume: Int) {
         self.ipRoku = ipRoku
         self.ipPi = ipPi
         self.keyboardMode = keyboardMode
+        self.volume = volume
         self.save()
     }
     
@@ -48,12 +50,14 @@ class Settings : ObservableObject { // this needs to be a reference type
         defaults.set(self.ipRoku, forKey: "ipRoku")
         defaults.set(self.ipPi, forKey: "ipPi")
         defaults.set(self.keyboardMode.rawValue, forKey: "keyboardMode")
+        defaults.set(self.volume, forKey: "volume")
     }
     
     func printSettings() {
         print("\tipRoku=", self.ipRoku)
         print("\tipPi=", self.ipPi)
         print("\tkeyboardMode=", self.keyboardMode)
+        print("\tvolume=", self.volume)
     }
     
     static func load() -> Settings? {
@@ -68,7 +72,8 @@ class Settings : ObservableObject { // this needs to be a reference type
             let ipRoku2 = defaults.string(forKey: "ipRoku")!
             let ipPi2 = defaults.string(forKey: "ipPi")!
             let keyboardMode2 = defaults.string(forKey: "keyboardMode")!
-            let res = Settings(ipRoku: ipRoku2, ipPi: ipPi2, keyboardMode: KeyboardMode(rawValue: keyboardMode2)!)
+            let volume2 = defaults.integer(forKey: "volume")
+            let res = Settings(ipRoku: ipRoku2, ipPi: ipPi2, keyboardMode: KeyboardMode(rawValue: keyboardMode2)!, volume: volume2)
             print("loaded=", res.ipRoku)
             res.printSettings()
             return res

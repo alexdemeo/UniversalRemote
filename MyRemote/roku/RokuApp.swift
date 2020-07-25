@@ -87,7 +87,7 @@ extension String {
 
 struct RokuApp_Previews: PreviewProvider {
     static var previews: some View {
-        ComponentRokuDevices()
+        ComponentRokuDevices(buttons: RemoteButton.getRokuButtons())
 //        HStack {
 //            ForEach(RemoteButton.getRokuButtons()) { btn in
 //                HStack {

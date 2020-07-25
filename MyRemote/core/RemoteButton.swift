@@ -56,6 +56,16 @@ struct RemoteButton : Identifiable {
     }
     
     private func roku() {
+        if (self.endpoint == .keypress) {
+            if self.command == "VolumeUp" && AppDelegate.settings().volume >= Constants.VOL_MAX {
+                AppDelegate.settings().volume = Constants.VOL_MAX
+                return
+            }
+            if self.command == "VolumeDown" && AppDelegate.settings().volume <= 0 {
+                AppDelegate.settings().volume = 0
+                return
+            }
+        }
         AppDelegate.instance().net(url: "\(AppDelegate.settings().rokuBaseURL)\(self.commandStr)", method: "POST")
     }
     
@@ -65,6 +75,7 @@ struct RemoteButton : Identifiable {
     
     static func getRokuButtons() -> [RemoteButton] {
         let apps = RokuApp.getApps()
+        print("Made buttons for apps:\n\(apps.map({"\t\($0)"}).joined(separator: "\n"))")
         return apps.map({
             RemoteButton(forType: .roku, symbol: $0.name, endpoint: .launch, command: $0.id, associatedApp: $0)
         })

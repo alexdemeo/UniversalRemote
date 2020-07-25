@@ -16,30 +16,30 @@ struct ContentViewMain: View {
     @EnvironmentObject var latestRequest: Request
     @EnvironmentObject var latestResponse: Response
     
-    private func sanitizeURL(url: String) -> String? {
-        if let regex = try? NSRegularExpression(pattern: "^http.*[0-9]", options: .caseInsensitive) {
-            return regex.stringByReplacingMatches(in: url, options: [], range: NSRange(location: 0, length:  url.count), withTemplate: "")
-        }
-        return nil
+    let buttons: [RemoteButton]
+    
+    init(buttons: [RemoteButton]) {
+        self.buttons = buttons
     }
     
     var body: some View {
-        let command: String = self.sanitizeURL(url: latestRequest.request?.url?.absoluteString ?? "") ?? "error"
+        let command: String = AppDelegate.sanitizeURL(url: latestRequest.request?.url?.absoluteString ?? "") ?? "error"
         var success = latestResponse.error == nil
         if let resp = latestResponse.response {
             success = success && resp.statusCode == 200
         }
         let msg = success ? nil : latestResponse.error?.localizedDescription
         return VStack {
+            Text("\(self.settings.volume)")
             HStack {
                 if (self.debugRemote != nil) {
                     if self.debugRemote! == .roku {
-                        ContentViewRoku()
+                        ContentViewRoku(buttons: self.buttons)
                     } else {
                         ContentViewCEC()
                     }
                 } else {
-                    ContentViewRoku()
+                    ContentViewRoku(buttons: self.buttons)
                     Divider().padding(.horizontal)
                     ContentViewCEC()
                 }
@@ -73,7 +73,7 @@ struct ContentViewMain: View {
 
 struct ContentViewMain_Previews: PreviewProvider {
     static var previews: some View {
-        ContentViewMain()
+        ContentViewMain(buttons: RemoteButton.getRokuButtons())
             .environmentObject(AppDelegate.settings())
             .environmentObject(AppDelegate.instance().displaySettingsPane)
             .environmentObject(AppDelegate.instance().latestRequest)

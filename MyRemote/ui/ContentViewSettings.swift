@@ -28,10 +28,17 @@ struct ContentViewSettings: View {
                 }
             }
             VStack {
-                Text("")
+                Stepper(value: $settings.volume, in: 1...Constants.VOL_MAX) {
+                    Text("Volume")
+                    TextField("", value: $settings.volume, formatter: NumberFormatter()).labelsHidden().frame(width: 25)
+                }
             }
         }
     }
+}
+
+extension NumberFormatter {
+    
 }
 
 struct ContentViewSettings_Previews: PreviewProvider {

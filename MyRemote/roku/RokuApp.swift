@@ -14,7 +14,7 @@ struct RokuApp {
     let version: String
     let name: String
     
-    var view: some View {
+    var viewLabelless: some View {
         if let imgData = AppDelegate.instance.netSync(url: "\(AppDelegate.settings.rokuBaseURL)/query/icon/\(self.id)", method: "GET") {
             guard let resp = imgData.1 else {
                 return AnyView(Text(self.name))
@@ -30,6 +30,13 @@ struct RokuApp {
         }
         // currently same error text if reply fails or reply has bad statusCode. Should probably separate these
         return AnyView(Text("ERROR"))
+    }
+    
+    var viewLabeled: some View {
+        VStack(spacing: -4) {
+            self.viewLabelless
+            Text(self.name)
+        }
     }
     
     init(line: String) {
@@ -62,6 +69,8 @@ extension String {
 struct RokuApp_Previews: PreviewProvider {
     static var previews: some View {
         ComponentRokuDevices()
+            .environmentObject(AppDelegate.instance.rokuChannelButtons)
+
         //        HStack {
         //            ForEach(RemoteButton.getRokuButtons()) { btn in
         //                HStack {

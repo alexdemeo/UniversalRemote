@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!--
+   export_options.plist
+   MyRemote
+
+   Created by Alex DeMeo on 7/27/20.
+   Copyright (c) 2020 Alex DeMeo. All rights reserved.
+-->
+<plist version="1.0">
+    <dict>
+      <key>method</key>
+        <string>development</string>
+    </dict>
+</plist>

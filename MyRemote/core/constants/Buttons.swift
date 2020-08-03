@@ -10,8 +10,8 @@ import Foundation
 
 struct Buttons {
     struct Roku {
-        static let MUTE             = RemoteButton(forType: .roku, symbol: "🔇", endpoint: .keypress, command: "Mute")
-        static let POWER            = RemoteButton(forType: .roku, symbol: "🔌", endpoint: .keypress, command: "Power")
+        static let MUTE             = RemoteButton(forType: .roku, symbol: "⁌", endpoint: .keypress, command: "Mute")
+        static let POWER            = RemoteButton(forType: .roku, symbol: "⏻", endpoint: .keypress, command: "Power")
         static let VOLUME_DOWN      = RemoteButton(forType: .roku, symbol: "−", endpoint: .keypress, command: "VolumeDown")
         static let VOLUME_UP        = RemoteButton(forType: .roku, symbol: "＋", endpoint: .keypress, command: "VolumeUp")
         static let DOWN             = RemoteButton(forType: .roku, symbol: "↓", endpoint: .keypress, command: "Down")

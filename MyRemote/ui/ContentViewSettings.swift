@@ -18,19 +18,25 @@ struct ContentViewSettings: View {
                     Text("Roku IP")
                         .frame(width: 50.0)
                     TextField(settings.ipRoku, text: $settings.ipRoku)
-                        .frame(width: 90)
+                        .frame(width: 50)
                 }
                 HStack {
                     Text("   RPi IP")
                         .frame(width: 50.0)
                     TextField(settings.ipPi, text: $settings.ipPi)
-                        .frame(width: 90)
+                        .frame(width: 50)
                 }
             }
             VStack {
                 Stepper(value: $settings.volume, in: 1...Constants.VOL_MAX) {
-                    Text("Volume")
+                    Text("    Volume")
                     TextField("", value: $settings.volume, formatter: NumberFormatter()).labelsHidden().frame(width: 25)
+                }
+                HStack {
+                    Text("Roku only")
+                    Toggle(isOn: $settings.isRokuOnly) {
+                        Text("")
+                        }.labelsHidden().toggleStyle(SwitchToggleStyle())
                 }
             }
         }

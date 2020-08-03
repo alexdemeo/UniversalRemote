@@ -16,7 +16,7 @@ struct ContentViewMain: View {
     @EnvironmentObject var latestRequest: Request
     @EnvironmentObject var latestResponse: Response
     @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
-
+    
     var body: some View {
         let command: String = AppDelegate.sanitizeURL(url: latestRequest.request?.url?.absoluteString ?? "") ?? "error"
         var success = latestResponse.error == nil
@@ -27,23 +27,25 @@ struct ContentViewMain: View {
         return VStack {
             Text("\(self.settings.volume)")
             HStack {
-                if (self.debugRemote != nil) {
-                    if self.debugRemote! == .roku {
-                        ContentViewRoku()
-                    } else {
+                if self.debugRemote == nil || self.debugRemote == .roku {
+                    ContentViewRoku()
+                }
+                if !self.settings.isRokuOnly {
+                    if self.debugRemote == nil {
+                        Divider().padding(.horizontal)
+                    }
+                    if self.debugRemote == nil || self.debugRemote == .cec {
                         ContentViewCEC()
                     }
-                } else {
-                    ContentViewRoku()
-                    Divider().padding(.horizontal)
-                    ContentViewCEC()
                 }
             }
             Divider()
             Picker("Keyboard", selection: $settings.keyboardMode) {
                 Text("Keyboard Off").tag(KeyboardMode.off)
                 Text("Roku Keyboard").tag(KeyboardMode.roku)
-                Text("CEC Keyboard").tag(KeyboardMode.cec)
+                if !self.settings.isRokuOnly {
+                    Text("CEC Keyboard").tag(KeyboardMode.cec)
+                }
             }.pickerStyle(SegmentedPickerStyle()).labelsHidden()
             ComponentStatus(command: command, msg: msg, success: success, statusCode: latestResponse.response?.statusCode ?? -1)
             if self.displaySettingsPane.shown {

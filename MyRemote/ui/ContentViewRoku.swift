@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentViewRoku: View {
     @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
-
+    
     var body: some View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL) {
             ComponentTop(buttonVolumeUp: Buttons.Roku.VOLUME_UP,
@@ -18,18 +18,13 @@ struct ContentViewRoku: View {
                          buttonPower: Buttons.Roku.POWER,
                          buttonMute: Buttons.Roku.MUTE)
             HStack {
-                Button(action: Buttons.Roku.BACK.exec) { Text(Buttons.Roku.BACK.symbol) }
-                    .padding(.leading, -12.0)
-                    .scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
-                    .alignmentGuide(.leading) { dimension in
-                        dimension[.leading]
-                }
+                Button(action: Buttons.Roku.BACK.exec) {
+                    Text(Buttons.Roku.BACK.symbol).padding(.trailing, 3)
+                }.scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
                 Spacer().frame(width: Constants.CELL_WIDTH)
-                Button(action: Buttons.Roku.HOME.exec) { Text(Buttons.Roku.HOME.symbol).padding(.bottom, 4) }
-                    .scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
-                    .alignmentGuide(.trailing) { dimension in
-                        dimension[.trailing]
-                }
+                Button(action: Buttons.Roku.HOME.exec) {
+                    Text(Buttons.Roku.HOME.symbol).padding(.bottom, 4)
+                }.scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
             }.padding(.top)
             ComponentArrows(buttonUp: Buttons.Roku.UP,
                             buttonDown: Buttons.Roku.DOWN,

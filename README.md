@@ -1,8 +1,6 @@
-#  My attempt at a universal remote program for split _Roku TV + RaspberryPi HDMI-CEC_ setup
-
-## WIP
+#  Roku remote for macOS with manually set IP to avoid the constant downtime trying to locate the device on the network. 
 
 Roku commands send over Roku over built-in External Control Protocol:\
 &nbsp;&nbsp;&nbsp;&nbsp;https://developer.roku.com/docs/developer-program/debugging/external-control-api.md
 
-CEC commands sent to Rasperry Pi running local web server
+

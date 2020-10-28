@@ -25,7 +25,6 @@ struct ContentViewMain: View {
         }
         let msg = success ? nil : latestResponse.error?.localizedDescription
         return VStack {
-            Text("\(self.settings.volume)")
             HStack {
                 if self.debugRemote == nil || self.debugRemote == .roku {
                     ContentViewRoku()

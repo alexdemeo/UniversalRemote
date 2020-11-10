@@ -37,11 +37,10 @@ struct Buttons {
         static let CHAN_YOUTUBE     = RemoteButton(forType: .roku, symbol: "YouTube", endpoint: .launch, command: "837")
         static let CHAN_SPOTIFY     = RemoteButton(forType: .roku, symbol: "Spotify", endpoint: .launch, command: "19977")
     }
-
-    struct CEC {
-        static let MUTE             = RemoteButton(forType: .cec, symbol: "🔇", endpoint: .volume, command: "")
-        static let POWER            = RemoteButton(forType: .cec, symbol: "🔌", endpoint: .power, command: "")
-        static let VOLUME_UP        = RemoteButton(forType: .cec, symbol: "＋", endpoint: .volume, command: "up")
-        static let VOLUME_DOWN      = RemoteButton(forType: .cec, symbol: "−", endpoint: .volume, command: "down")
+    struct Spotify {
+        static let REWIND           = RemoteButton(forType: .spotify, symbol: "⦉⦉", endpoint: .player, command: "previous")
+        static let PLAY            = RemoteButton(forType: .spotify, symbol: "▻", endpoint: .player, command: "play")
+        static let PAUSE            = RemoteButton(forType: .spotify, symbol: "⫾⫾", endpoint: .player, command: "pause")
+        static let FORWARD          = RemoteButton(forType: .spotify, symbol: "⦊⦊", endpoint: .player, command: "next")
     }
 }

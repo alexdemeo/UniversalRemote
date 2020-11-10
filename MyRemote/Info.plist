@@ -37,6 +37,17 @@
 	<string>Main</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>remotey</string>
+			</array>
+			<key>CFBundleURLName</key>
+			<string>com.wheresthevolume.remotey</string>
+		</dict>
+	</array>
 	<key>NSSupportsAutomaticTermination</key>
 	<true/>
 	<key>NSSupportsSuddenTermination</key>

@@ -65,20 +65,12 @@ struct Constants {
                                                     //        "escape"        : Buttons.Roku.?
                                                     ]
     
-    static let DEFAULT_KEYBINDS_CEC                 = [
-            "="             : Buttons.CEC.VOLUME_UP,
-            "-"             : Buttons.CEC.VOLUME_DOWN
-    //        "0"             : Buttons.Roku.MUTE,
-    //        "escape"        : Buttons.Roku.?
-    ]
-    
     static let VOL_MAX = 100
     
     static let DEFAULT_SETTINGS: Settings           = Settings(ipRoku: "",
-                                                               ipPi: "",
                                                                keyboardMode: KeyboardMode.off,
-                                                               volume: 0,
-                                                               isRokuOnly: true)
+                                                               isRokuOnly: true,
+                                                               refreshToken: nil)
     
     static let ROKU_APP_QUERY_TIMEOUT_SECONDS: Int  = 5
         

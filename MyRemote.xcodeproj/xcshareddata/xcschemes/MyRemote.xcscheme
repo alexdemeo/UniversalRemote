@@ -70,6 +70,18 @@
             ReferencedContainer = "container:MyRemote.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <EnvironmentVariables>
+         <EnvironmentVariable
+            key = "SPOTIFY_CLIENT_ID"
+            value = "899763c8114947eabe313135f7382c93"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+         <EnvironmentVariable
+            key = "SPOTIFY_CLIENT_SECRET"
+            value = "d463cd7b4a254d53a20b1e47e45a4c65"
+            isEnabled = "YES">
+         </EnvironmentVariable>
+      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

@@ -8,20 +8,30 @@
 
 import Foundation
 
-enum KeyboardMode: String, Codable, CaseIterable {
-    case off, roku, cec
-}
-
 enum CodingKeys: CodingKey {
     case ipRoku, ipPi, keyboardMode
 }
 
 class Settings : ObservableObject { // this needs to be a reference type
     @Published var ipRoku: String
-    @Published var ipPi: String
     @Published var keyboardMode: KeyboardMode
-    @Published var volume: Int
     @Published var isRokuOnly: Bool
+    
+    var refreshToken: String? {
+        get {
+            let defaults = UserDefaults.standard
+            let result = defaults.string(forKey: "refreshToken")
+//            print("got refreshToken=\(String(describing: result))")
+            return result
+        }
+        set {
+            if let val = newValue {
+                let defaults = UserDefaults.standard
+//                print("saved refreshToken=\(val)")
+                defaults.set(val, forKey: "refreshToken")
+            }
+        }
+    }
     
     private static let path = URL(fileURLWithPath: "settings.json")
     private static let firstTimeKey = "firstTime"
@@ -30,37 +40,28 @@ class Settings : ObservableObject { // this needs to be a reference type
         "http://\(AppDelegate.settings.ipRoku):8060"
     }
     
-    var cecBaseURL: String {
-        "http://\(AppDelegate.settings.ipPi):5000"
-    }
 //    AppDelegate.instance().net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
 
-    init(ipRoku: String, ipPi: String, keyboardMode: KeyboardMode, volume: Int, isRokuOnly: Bool) {
+    init(ipRoku: String, keyboardMode: KeyboardMode, isRokuOnly: Bool, refreshToken: String?) {
         self.ipRoku = ipRoku
-        self.ipPi = ipPi
         self.keyboardMode = keyboardMode
-        self.volume = volume
         self.isRokuOnly = isRokuOnly
-        self.save()
+        self.refreshToken = refreshToken
     }
     
+    
     func save() {
-        print("saving settings...")
-        self.printSettings()
-        
+//        print("saving settings...")
+//        self.printSettings()
         let defaults = UserDefaults.standard
         defaults.set(self.ipRoku, forKey: "ipRoku")
-        defaults.set(self.ipPi, forKey: "ipPi")
         defaults.set(self.keyboardMode.rawValue, forKey: "keyboardMode")
-        defaults.set(self.volume, forKey: "volume")
         defaults.set(self.isRokuOnly, forKey: "isRokuOnly")
     }
     
     func printSettings() {
         print("\tipRoku=\(self.ipRoku)")
-        print("\tipPi=\(self.ipPi)")
         print("\tkeyboardMode=\(self.keyboardMode)")
-        print("\tvolume=\(self.volume)")
         print("\tisRokuOnly=\(self.isRokuOnly)")
     }
     
@@ -74,12 +75,11 @@ class Settings : ObservableObject { // this needs to be a reference type
             return res
         } else {
             let res = Settings(ipRoku:          defaults.string(forKey: "ipRoku")!,
-                               ipPi:            defaults.string(forKey: "ipPi")!,
                                keyboardMode:    KeyboardMode(rawValue: defaults.string(forKey: "keyboardMode")!)!,
-                               volume:          defaults.integer(forKey: "volume"),
-                               isRokuOnly:      defaults.bool(forKey: "isRokuOnly"))
+                               isRokuOnly:      defaults.bool(forKey: "isRokuOnly"),
+                               refreshToken:    defaults.string(forKey: "refreshToken"))
             print("loaded=", res.ipRoku)
-            res.printSettings()
+//            res.printSettings()
             return res
         }
     }

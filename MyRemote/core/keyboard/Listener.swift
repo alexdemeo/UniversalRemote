@@ -16,8 +16,6 @@ func keyDown(keycode: UInt16, mode: KeyboardMode, shiftDown: Bool) {
             print("Uhh, 2+2=5")
         case .roku:
             keyRoku(key: key, shiftDown: shiftDown)
-        case .cec:
-            keyCEC(key: key)
         }
     }
 }
@@ -35,14 +33,5 @@ func keyRoku(key: String, shiftDown: Bool) {
         } else if key == "backspace" {
             RemoteButton(forType: .roku, symbol: key, endpoint: .keypress, command: "Backspace").exec()
         }
-    }
-}
-
-func keyCEC(key: String) {
-    if let btn = Constants.DEFAULT_KEYBINDS_CEC[key] {
-        print("from keyboard: \(btn.symbol)")
-        btn.exec()
-    } else {
-        print("CEC unrecognized button")
     }
 }

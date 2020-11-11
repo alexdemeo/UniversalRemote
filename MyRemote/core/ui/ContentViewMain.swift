@@ -23,7 +23,8 @@ struct ContentViewMain: View {
         if let resp = latestResponse.response {
             success = success && (resp.statusCode == 200 || resp.statusCode == 204)
         }
-        let msg = success ? nil : latestResponse.error?.localizedDescription
+        let msg = success ? nil :
+            latestResponse.data == nil ? latestResponse.error?.localizedDescription : String(data: latestResponse.data!, encoding: .utf8)
         return VStack {
             HStack {
                 ForEach(remotes.indices) {

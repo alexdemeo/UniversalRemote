@@ -16,4 +16,8 @@ mkdir -p "build"
 xcodebuild -scheme MyRemote -archivePath $ARCHIVE_PATH -project MyRemote.xcodeproj archive
 xcodebuild -exportArchive -archivePath $ARCHIVE_PATH -exportPath $EXPORT_PATH -exportOptionsPlist "exportOptions.plist"
 
+if [[ "$1" == "-o" ]]; then
+    "$EXPORT_PATH/MyRemote.app/Contents/MacOS/MyRemote"
+fi
+
 echo "Done"

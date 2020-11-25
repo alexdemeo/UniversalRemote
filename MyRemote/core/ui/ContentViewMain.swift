@@ -8,12 +8,6 @@
 
 import SwiftUI
 
-//let remotes: [RemoteType] = [
-//    .roku,
-////    .spotify,
-//    .home,
-//]
-
 struct ContentViewMain: View {
     @EnvironmentObject var settings: Settings
     @EnvironmentObject var displaySettingsPane: DisplaySettingsPane
@@ -41,9 +35,8 @@ struct ContentViewMain: View {
                             ContentViewRoku()
                         } else if remote.title == RemoteType.spotify.rawValue {
                             ContentViewSpotify()
-                        }
-                        else if remote.title == RemoteType.home.rawValue {
-                            
+                        } else if remote.title == RemoteType.home.rawValue {
+                            ContentViewHome()
                         }
                     }
                 }

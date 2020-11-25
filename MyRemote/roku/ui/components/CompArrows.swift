@@ -22,7 +22,7 @@ struct ComponentArrows: View {
                 Button(action: buttonUp.exec ) { Text(buttonUp.symbol) }
                 Spacer().frame(width: Constants.CELL_WIDTH)
             }
-            HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH) {
+            HStack(spacing: Constants.SPACING_VERTICAL * 1.5) {
                 Button(action: buttonLeft.exec) { Text(buttonLeft.symbol) }
                 Button(action: buttonOK.exec) { Text(buttonOK.symbol) }
                 Button(action: buttonRight.exec) { Text(buttonRight.symbol) }

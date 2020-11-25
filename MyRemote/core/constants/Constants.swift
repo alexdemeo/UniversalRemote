@@ -35,7 +35,7 @@ import Foundation
 struct Constants {
     /**************** Defined constants ******************/
     
-    static let WINDOW_WIDTH: CGFloat                = 340 * 2
+    static let WINDOW_WIDTH: CGFloat                = 360 * 2
     static let WINDOW_HEIGHT: CGFloat               = 620
     
     static let ROWS: Int                            = 17

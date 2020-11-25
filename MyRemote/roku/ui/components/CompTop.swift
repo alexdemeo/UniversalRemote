@@ -18,7 +18,7 @@ struct ComponentTop: View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL) {
             HStack(alignment: .top) {
                 Button(action: buttonVolumeUp.exec) {
-                    Text(buttonVolumeUp.symbol).padding(.leading, 1)
+                    Text(buttonVolumeUp.symbol)
                 }
                 Spacer().frame(width: Constants.CELL_WIDTH)
                 Button(action: buttonPower.exec) {
@@ -30,8 +30,8 @@ struct ComponentTop: View {
                     Text(buttonVolumeDown.symbol)
                 }
                 Spacer().frame(width: Constants.CELL_WIDTH)
-                Button(action:buttonMute.exec) {
-                    Text(buttonMute.symbol).padding(.leading, 2)
+                Button(action: buttonMute.exec) {
+                    Text(buttonMute.symbol)
                 }
             }
         }

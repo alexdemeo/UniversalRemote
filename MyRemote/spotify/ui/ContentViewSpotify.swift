@@ -40,7 +40,7 @@ struct ContentViewSpotify: View {
             do {
                 let d = try JSONSerialization.jsonObject(with: data, options: []) as! [String: Any]
                 if let playing = d["is_playing"] as? Bool {
-                    print("is_playing = \(playing)")
+//                    print("is_playing = \(playing)")
                     self.isPlaying = playing
                 }
                 if let song = d["item"] as? [String: Any] {
@@ -61,7 +61,7 @@ struct ContentViewSpotify: View {
                     guard let images = album["images"] as? [[String: Any]] else {
                         return
                     }
-                    print("\(songName) by \(artistName) from \(albumName)")
+//                    print("\(songName) by \(artistName) from \(albumName)")
                     guard let img = images.max(by: {
                         i, j in
                         (i["width"] as! Int) < (j["width"] as! Int)}) else {
@@ -69,7 +69,7 @@ struct ContentViewSpotify: View {
                     }
 
                     if let url = img["url"] as? String {
-                        print("imgUrl=\(url)")
+//                        print("imgUrl=\(url)")
                         self.albumImgURl = url
                     }
                 }
@@ -110,11 +110,11 @@ struct ContentViewSpotify: View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL, content: {
             if let a = self.albumImgURl, let (data, _, _) = AppDelegate.instance.netSync(url: a, method: "GET") {
                 AnyView(VStack {
-                    Image(nsImage: NSImage(data: data!)!).resizable().aspectRatio(contentMode: .fit)
+                    Image(nsImage: NSImage(data: data!)!).resizable().aspectRatio(contentMode: .fit).frame(width: Constants.REMOTE_WIDTH / 2, height: Constants.REMOTE_WIDTH / 2)
                     Text(self.songName!).multilineTextAlignment(.center)
                     Text(self.artistName!).fontWeight(.light).multilineTextAlignment(.center)
                     Text(self.albumName!).fontWeight(.ultraLight).multilineTextAlignment(.center)
-                })
+                }.fixedSize())
             }
             HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH) {
                 Button(action: {

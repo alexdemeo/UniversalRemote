@@ -20,12 +20,12 @@ struct ComponentRokuDevices: View {
             return AnyView(VStack {
                 ComponentGroupedView(inputs.map({ btn in
                     AnyView(Button(action: btn.exec) {
-                        btn.associatedApp!.viewLabeled.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL + 14).scaledToFit()
+                        btn.associatedApp!.viewLabeled.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL - 15, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL + 14 - 15).scaledToFit()
                     })
                 }))
                 ComponentGroupedView(channels.map({ btn in
                     AnyView(Button(action: btn.exec) {
-                        btn.associatedApp!.viewLabelless.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL).scaledToFit()
+                        btn.associatedApp!.viewLabelless.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL - 15, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL - 10).scaledToFit()
                     })
                 }))
             })
@@ -37,5 +37,6 @@ struct ComponentRokuDevices_Previews: PreviewProvider {
     static var previews: some View {
         ComponentRokuDevices()
             .environmentObject(AppDelegate.instance.rokuChannelButtons)
+            .frame(width: 300, height: 300).buttonStyle(BorderlessButtonStyle())
     }
 }

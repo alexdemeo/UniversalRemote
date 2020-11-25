@@ -10,7 +10,8 @@ import SwiftUI
 
 struct ContentViewRoku: View {
     @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
-    
+    @EnvironmentObject var settings: Settings
+
     var body: some View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL) {
             ComponentTop(buttonVolumeUp: Buttons.Roku.VOLUME_UP,
@@ -40,8 +41,12 @@ struct ContentViewRoku: View {
                 Button(action: Buttons.Roku.REWIND.exec) { Text(Buttons.Roku.REWIND.symbol) }
                 Button(action: Buttons.Roku.PLAY_PLAUSE.exec) { Text(Buttons.Roku.PLAY_PLAUSE.symbol) }
                 Button(action: Buttons.Roku.FORWARD.exec) { Text(Buttons.Roku.FORWARD.symbol) }
-            }.padding(.bottom)
-            ComponentRokuDevices().padding(.bottom)
+            }
+            ComponentRokuDevices()
+            Picker("Keyboard", selection: $settings.keyboardMode) {
+                Text("Off").tag(KeyboardMode.off)
+                Text("Roku").tag(KeyboardMode.roku)
+            }.pickerStyle(SegmentedPickerStyle()).labelsHidden()
         }.padding(.top)
     }
 }

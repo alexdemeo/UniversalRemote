@@ -34,7 +34,6 @@
 		EFF5949324ABE364003820DB /* RemoteButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFF5949224ABE364003820DB /* RemoteButton.swift */; };
 		EFFEE99F24A7024B003829B8 /* CompArrows.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE99E24A7024B003829B8 /* CompArrows.swift */; };
 		EFFEE9A124A703F3003829B8 /* CompTop.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A024A703F3003829B8 /* CompTop.swift */; };
-		EFFEE9A524A89365003829B8 /* CompDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9A424A89365003829B8 /* CompDevices.swift */; };
 		EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */; };
 /* End PBXBuildFile section */
 
@@ -92,7 +91,6 @@
 		EFF5949224ABE364003820DB /* RemoteButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteButton.swift; sourceTree = "<group>"; };
 		EFFEE99E24A7024B003829B8 /* CompArrows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompArrows.swift; sourceTree = "<group>"; };
 		EFFEE9A024A703F3003829B8 /* CompTop.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompTop.swift; sourceTree = "<group>"; };
-		EFFEE9A424A89365003829B8 /* CompDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompDevices.swift; sourceTree = "<group>"; };
 		EFFEE9AD24AAA0F7003829B8 /* Buttons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -161,7 +159,6 @@
 			children = (
 				EFFEE99E24A7024B003829B8 /* CompArrows.swift */,
 				EFFEE9A024A703F3003829B8 /* CompTop.swift */,
-				EFFEE9A424A89365003829B8 /* CompDevices.swift */,
 				EF8EBEF824BEAFA8003FEF8A /* CompRokuDevices.swift */,
 			);
 			path = components;
@@ -462,7 +459,6 @@
 				EF5F79BC254BBB1100AA138C /* Auth.swift in Sources */,
 				EF838F3B24AAEA9E00A7DAAA /* Keycode.swift in Sources */,
 				EFD964E024A5996500BCBB86 /* Constants.swift in Sources */,
-				EFFEE9A524A89365003829B8 /* CompDevices.swift in Sources */,
 				EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

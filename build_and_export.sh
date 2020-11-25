@@ -10,7 +10,7 @@ ARCHIVE_PATH="build/MyRemote.xcarchive"
 EXPORT_PATH="/Applications"
 
 mkdir -p "build"
-#rm -rf "/Applications/MyRemote.app"
+rm -rf "$EXPORT_PATH/MyRemote.app"
 
 #xcodebuild clean build -project MyRemote.xcodeproj
 xcodebuild -scheme MyRemote -archivePath $ARCHIVE_PATH -project MyRemote.xcodeproj archive

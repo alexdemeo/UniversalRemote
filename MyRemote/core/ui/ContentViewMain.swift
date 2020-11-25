@@ -31,18 +31,17 @@ struct ContentViewMain: View {
                     if $0 != 0 {
                         Divider().padding(.horizontal)
                     }
-                    switch remotes[$0] {
-                    case .roku:
+                    if remotes[$0] == .roku {
                         ContentViewRoku()
-                    case .spotify:
+                    } else if remotes[$0] == .spotify {
                         ContentViewSpotify()
                     }
                 }
             }
             Divider()
             Picker("Keyboard", selection: $settings.keyboardMode) {
-                Text("Keyboard Off").tag(KeyboardMode.off)
-                Text("Roku Keyboard").tag(KeyboardMode.roku)
+                Text("Off").tag(KeyboardMode.off)
+                Text("Roku").tag(KeyboardMode.roku)
             }.pickerStyle(SegmentedPickerStyle()).labelsHidden()
             ComponentStatus(command: command, msg: msg, success: success, statusCode: latestResponse.response?.statusCode ?? -1)
             if self.displaySettingsPane.shown {

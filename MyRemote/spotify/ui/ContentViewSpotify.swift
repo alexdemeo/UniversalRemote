@@ -110,7 +110,7 @@ struct ContentViewSpotify: View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL, content: {
             if let a = self.albumImgURl, let (data, _, _) = AppDelegate.instance.netSync(url: a, method: "GET") {
                 AnyView(VStack {
-                    Image(nsImage: NSImage(data: data!)!)
+                    Image(nsImage: NSImage(data: data!)!).resizable().aspectRatio(contentMode: .fit)
                     Text(self.songName!).multilineTextAlignment(.center)
                     Text(self.artistName!).fontWeight(.light).multilineTextAlignment(.center)
                     Text(self.albumName!).fontWeight(.ultraLight).multilineTextAlignment(.center)
@@ -119,17 +119,16 @@ struct ContentViewSpotify: View {
             HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH) {
                 Button(action: {
                     self.skip(backward: true)
-                }) { Text(Buttons.Spotify.REWIND.symbol) }.scaleEffect(2.0)
+                }) { Text(Buttons.Spotify.REWIND.symbol) }
                 if self.isPlaying == true {
-                    Button(action: self.pause) { Text(Buttons.Spotify.PAUSE.symbol) }.scaleEffect(2.0)
+                    Button(action: self.pause) { Text(Buttons.Spotify.PAUSE.symbol) }
                 } else {
-                    Button(action: self.play) { Text(Buttons.Spotify.PLAY.symbol) }.scaleEffect(2.0)
+                    Button(action: self.play) { Text(Buttons.Spotify.PLAY.symbol) }
                 }
                 Button(action: {
                         self.skip()
-                }) { Text(Buttons.Spotify.FORWARD.symbol) }.scaleEffect(2.0)
+                }) { Text(Buttons.Spotify.FORWARD.symbol) }
             }.padding(.bottom)
-//            }
             Button(action: self.refreshPlaybackState) {
                 Text("↻")
             }

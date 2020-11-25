@@ -19,17 +19,17 @@ struct ComponentArrows: View {
         VStack(alignment: .center, spacing: Constants.SPACING_VERTICAL) {
             HStack(alignment: .top) {
                 Spacer().frame(width: Constants.CELL_WIDTH)
-                Button(action: buttonUp.exec ) { Text(buttonUp.symbol) }.scaleEffect(2.0)
+                Button(action: buttonUp.exec ) { Text(buttonUp.symbol) }
                 Spacer().frame(width: Constants.CELL_WIDTH)
             }
             HStack(spacing: Constants.REMOTE_CENTER_GAP_WIDTH) {
-                Button(action: buttonLeft.exec) { Text(buttonLeft.symbol) }.scaleEffect(2.0)
-                Button(action: buttonOK.exec) { Text(buttonOK.symbol) }.scaleEffect(2.0)
-                Button(action: buttonRight.exec) { Text(buttonRight.symbol) }.scaleEffect(2.0)
+                Button(action: buttonLeft.exec) { Text(buttonLeft.symbol) }
+                Button(action: buttonOK.exec) { Text(buttonOK.symbol) }
+                Button(action: buttonRight.exec) { Text(buttonRight.symbol) }
             }
             HStack(alignment: .bottom) {
                 Spacer().frame(width: Constants.CELL_WIDTH)
-                Button(action: buttonDown.exec) { Text(buttonDown.symbol) }.scaleEffect(2.0)
+                Button(action: buttonDown.exec) { Text(buttonDown.symbol) }
                 Spacer().frame(width: Constants.CELL_WIDTH)
             }
         }

@@ -20,12 +20,7 @@ struct RokuApp {
                 return AnyView(Text(self.name))
             }
             if resp.statusCode == 200 {
-                return AnyView(Image(nsImage: NSImage(data: imgData.0!)!)
-                    .renderingMode(.original)
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: Constants.CELL_WIDTH, height: Constants.CELL_HEIGHT)
-                    .scaleEffect(2))
+                return AnyView(Image(nsImage: NSImage(data: imgData.0!)!).resizable())
             }
         }
         // currently same error text if reply fails or reply has bad statusCode. Should probably separate these
@@ -33,7 +28,7 @@ struct RokuApp {
     }
     
     var viewLabeled: some View {
-        VStack(spacing: -4) {
+        VStack(spacing: -25) {
             self.viewLabelless
             Text(self.name)
         }

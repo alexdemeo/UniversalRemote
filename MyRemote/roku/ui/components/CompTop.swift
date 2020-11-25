@@ -19,20 +19,20 @@ struct ComponentTop: View {
             HStack(alignment: .top) {
                 Button(action: buttonVolumeUp.exec) {
                     Text(buttonVolumeUp.symbol).padding(.leading, 1)
-                }.scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
+                }
                 Spacer().frame(width: Constants.CELL_WIDTH)
                 Button(action: buttonPower.exec) {
                     Text(buttonPower.symbol)
-                }.scaleEffect(2.0)
+                }
             }
             HStack(alignment: .top) {
                 Button(action: buttonVolumeDown.exec) {
                     Text(buttonVolumeDown.symbol)
-                }.scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
+                }
                 Spacer().frame(width: Constants.CELL_WIDTH)
                 Button(action:buttonMute.exec) {
                     Text(buttonMute.symbol).padding(.leading, 2)
-                }.scaleEffect(/*@START_MENU_TOKEN@*/2.0/*@END_MENU_TOKEN@*/)
+                }
             }
         }
     }

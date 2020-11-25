@@ -57,6 +57,7 @@ class Settings : ObservableObject { // this needs to be a reference type
         defaults.set(self.ipRoku, forKey: "ipRoku")
         defaults.set(self.keyboardMode.rawValue, forKey: "keyboardMode")
         defaults.set(self.isRokuOnly, forKey: "isRokuOnly")
+        defaults.set(self.refreshToken, forKey: "refreshToken")
     }
     
     func printSettings() {

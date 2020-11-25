@@ -20,6 +20,7 @@ struct ContentViewSettings: View {
                     TextField(settings.ipRoku, text: $settings.ipRoku)
                         .frame(width: 100)
                 }
+                ComponentRemotePicker()
             }
         }
     }

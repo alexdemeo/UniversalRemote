@@ -8,9 +8,10 @@
 
 import Foundation
 
-enum RemoteType: String {
+enum RemoteType: String, CaseIterable {
     case roku = "Roku"
     case spotify = "Spotify"
+    case home = "Home"
 }
 
 enum CommandEndpoint: String {
@@ -20,5 +21,8 @@ enum CommandEndpoint: String {
     
     /**************** Spotify endpoints ******************/
     case player = "player"
+    
+    /**************** Home endpoints ******************/
+    case coffee = "coffee"
 }
 

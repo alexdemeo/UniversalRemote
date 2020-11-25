@@ -10,6 +10,7 @@
 		EF04398B24CAA48F002EEDBB /* CompGroupedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */; };
 		EF15336824B6D52600D512F7 /* CompStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336724B6D52600D512F7 /* CompStatus.swift */; };
 		EF15336C24B6DD3D00D512F7 /* RokuApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF15336B24B6DD3D00D512F7 /* RokuApp.swift */; };
+		EF4AA09A256E093600AE4A40 /* CompRemotePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF4AA099256E093600AE4A40 /* CompRemotePicker.swift */; };
 		EF5F79B6254BAD9100AA138C /* ContentViewSpotify.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F79B5254BAD9100AA138C /* ContentViewSpotify.swift */; };
 		EF5F79BC254BBB1100AA138C /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F79BB254BBB1100AA138C /* Auth.swift */; };
 		EF5F79C4254BC52200AA138C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5F79C3254BC52200AA138C /* NetworkManager.swift */; };
@@ -58,6 +59,7 @@
 		EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompGroupedView.swift; sourceTree = "<group>"; };
 		EF15336724B6D52600D512F7 /* CompStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompStatus.swift; sourceTree = "<group>"; };
 		EF15336B24B6DD3D00D512F7 /* RokuApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RokuApp.swift; sourceTree = "<group>"; };
+		EF4AA099256E093600AE4A40 /* CompRemotePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRemotePicker.swift; sourceTree = "<group>"; };
 		EF5F79B5254BAD9100AA138C /* ContentViewSpotify.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewSpotify.swift; sourceTree = "<group>"; };
 		EF5F79BB254BBB1100AA138C /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		EF5F79C3254BC52200AA138C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -199,6 +201,7 @@
 			children = (
 				EF15336724B6D52600D512F7 /* CompStatus.swift */,
 				EF04398A24CAA48F002EEDBB /* CompGroupedView.swift */,
+				EF4AA099256E093600AE4A40 /* CompRemotePicker.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -443,6 +446,7 @@
 				EF15336C24B6DD3D00D512F7 /* RokuApp.swift in Sources */,
 				EF838F3824AAE53100A7DAAA /* Listener.swift in Sources */,
 				EFD964AF24A55D5600BCBB86 /* ContentViewMain.swift in Sources */,
+				EF4AA09A256E093600AE4A40 /* CompRemotePicker.swift in Sources */,
 				EFFEE9AE24AAA0F7003829B8 /* Buttons.swift in Sources */,
 				EF73F86C25566EE200A2B8AE /* util.swift in Sources */,
 				EF838F3524AABC3C00A7DAAA /* Errors.swift in Sources */,

@@ -69,7 +69,11 @@ struct Constants {
     
     static let DEFAULT_SETTINGS: Settings           = Settings(ipRoku: "",
                                                                keyboardMode: KeyboardMode.off,
-                                                               isRokuOnly: true,
+                                                               remotes: [
+                                                                RemoteData(title: "Roku", enabled: true),
+                                                                RemoteData(title: "Spotify", enabled: true),
+                                                                RemoteData(title: "Home", enabled: true)
+                                                               ],
                                                                refreshToken: nil)
     
     static let ROKU_APP_QUERY_TIMEOUT_SECONDS: Int  = 5

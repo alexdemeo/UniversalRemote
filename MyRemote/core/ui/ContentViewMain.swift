@@ -8,7 +8,11 @@
 
 import SwiftUI
 
-let remotes: [RemoteType] = [.roku, .spotify]
+//let remotes: [RemoteType] = [
+//    .roku,
+////    .spotify,
+//    .home,
+//]
 
 struct ContentViewMain: View {
     @EnvironmentObject var settings: Settings
@@ -27,16 +31,20 @@ struct ContentViewMain: View {
             latestResponse.data == nil ? latestResponse.error?.localizedDescription : String(data: latestResponse.data!, encoding: .utf8)
         return VStack {
             HStack {
-                ForEach(remotes.indices) {
-                    if $0 != 0 {
-                        Divider().padding(.horizontal)
-                    }
-                    if remotes[$0] == .roku {
-                        ContentViewRoku()
-                            .environmentObject(self.rokuChannelButtons)
-                            .environmentObject(self.settings)
-                    } else if remotes[$0] == .spotify {
-                        ContentViewSpotify()
+                ForEach(settings.remotes.indices) {
+                    let remote = settings.remotes[$0]
+                    if remote.enabled {
+                        if $0 != settings.firstEnabledIndex {
+                            Divider().padding(.horizontal)
+                        }
+                        if remote.title == RemoteType.roku.rawValue {
+                            ContentViewRoku()
+                        } else if remote.title == RemoteType.spotify.rawValue {
+                            ContentViewSpotify()
+                        }
+                        else if remote.title == RemoteType.home.rawValue {
+                            
+                        }
                     }
                 }
             }
@@ -58,8 +66,7 @@ struct ContentViewMain: View {
                     Text("⚙")
                 }
             }
-        }
-        .padding(.all)
+        }.padding(.all)
     }
 }
 

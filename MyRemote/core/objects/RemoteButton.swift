@@ -35,13 +35,18 @@ struct RemoteButton : Identifiable {
         "/\(self.endpoint)/\([self.command].joined(separator: "/"))"
     }
     
-    func exec() {
+    func exec() { // This is a dumb paradigm, I'm too lazy to fix it rn.
         switch self.type {
         case .roku:
             self.roku()
         case .spotify:
             self.spotify()
+        case .home:
+            self.home()
         }
+    }
+    
+    private func home() {
     }
     
     private func spotify() {

@@ -8,29 +8,9 @@
 
 import SwiftUI
 
-//enum CodingKeys: CodingKey {
-//    case ipRoku, ipPi, keyboardMode
-//}
-
-//enum RemoteDataCodingKeys: CodingKey {
-//    case title, enabled
-//}
-
 struct RemoteData: Codable, Equatable {
     var title: String
     var enabled: Bool
-    
-//    func encode(to encoder: Encoder) throws {
-//        var container = encoder.container(keyedBy: RemoteDataCodingKeys.self)
-//        try container.encode(enabled, forKey: .title)
-//        try container.encode(enabled, forKey: .enabled)
-//    }
-//    
-//    required init(from decoder: Decoder) throws {
-//        let container = try decoder.container(keyedBy: RemoteDataCodingKeys.self)
-//        title = try container.decode(String.self, forKey: .title)
-//        enabled = try container.decode(Bool.self, forKey: .enabled)
-//    }
 }
 
 class Settings : ObservableObject { // this needs to be a reference type
@@ -65,15 +45,12 @@ class Settings : ObservableObject { // this needs to be a reference type
         "http://\(AppDelegate.settings.ipRoku):8060"
     }
     
-    //    AppDelegate.instance().net(url: "http://\(AppDelegate.settings().ipRoku):8060\(self.commandStr)", method: "POST")
-    
     init(ipRoku: String, keyboardMode: KeyboardMode, remotes: [RemoteData], refreshToken: String?) {
         self.ipRoku = ipRoku
         self.keyboardMode = keyboardMode
         self.remotes = remotes
         self.refreshToken = refreshToken
     }
-    
     
     func save() {
         print("saving settings...")

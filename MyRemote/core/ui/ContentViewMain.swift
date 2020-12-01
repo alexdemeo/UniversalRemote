@@ -15,16 +15,39 @@ struct ContentViewMain: View {
     @EnvironmentObject var latestResponse: Response
     @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
     
+    var settingsView: some View {
+        VStack {
+            if self.displaySettingsPane.shown {
+                ContentViewSettings().padding(.vertical)
+                Button(action: {
+                    self.settings.save()
+                    self.displaySettingsPane.shown.toggle()
+                    self.rokuChannelButtons.sendRefreshRequest()
+                }) {
+                    Text("Save")
+                }.buttonStyle(DefaultButtonStyle())
+            } else {
+                Button(action: {
+                    self.displaySettingsPane.shown.toggle()
+                }) {
+                    Text("⚙")
+                }
+            }
+        }
+    }
+    
     var body: some View {
         let command: String = NetworkManager.sanitizeURL(url: latestRequest.request?.url?.absoluteString ?? "") ?? "error"
         var success = latestResponse.error == nil
         if let resp = latestResponse.response {
-            success = success && (resp.statusCode == 200 || resp.statusCode == 204)
+            let statusCode = resp.statusCode
+            success = success && (200 <= statusCode) && (statusCode < 300)
         }
         let msg = success ? nil :
             latestResponse.data == nil ? latestResponse.error?.localizedDescription : String(data: latestResponse.data!, encoding: .utf8)
         return VStack {
             HStack {
+                Spacer()
                 ForEach(settings.remotes.indices) {
                     let remote = settings.remotes[$0]
                     if remote.enabled {
@@ -40,6 +63,7 @@ struct ContentViewMain: View {
                         }
                     }
                 }
+                Spacer()
             }
             Divider()
             ComponentStatus(command: command, msg: msg, success: success, statusCode: latestResponse.response?.statusCode ?? -1)

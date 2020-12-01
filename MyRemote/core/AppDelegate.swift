@@ -39,7 +39,7 @@ class ObservedCoffeeMachine: ObservableObject {
     @Published var coffeeState: CoffeeState? = nil
 
     func sendRefreshRequest() {
-        AppDelegate.instance.netAsync(url: "\(pi3URL)/status", method: "GET", header: nil, body: nil, callback: {
+        AppDelegate.instance.netAsync(url: "\(pi3URL)/status", method: "GET", header: nil, body: nil) {
             data, response, error in
             guard let data = data else {
                 return
@@ -47,7 +47,7 @@ class ObservedCoffeeMachine: ObservableObject {
             let code = String(data: data, encoding: .utf8)
             self.coffeeState = code == "on" ? .on : .off
             print("machine is \(String(describing: code))")
-        })
+        }
     }
 }
 

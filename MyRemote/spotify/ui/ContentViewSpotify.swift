@@ -28,7 +28,7 @@ struct ContentViewSpotify: View {
     @State var albumName: String? = nil
     
     func refreshPlaybackState() {
-        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player", method: "GET", header: header, body: nil, callback: {
+        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player", method: "GET", header: header, body: nil) {
             data, response, error in
             guard let data = data else {
 //                if response?.statusCode == 204 {
@@ -77,32 +77,32 @@ struct ContentViewSpotify: View {
                 print("Error playPause()")
             }
             
-        })
+        }
     }
     
     func play() {
-        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player/play", method: "PUT", header: header, body: nil, callback: {
+        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player/play", method: "PUT", header: header, body: nil) {
             data, response, error in
             self.refreshPlaybackState()
-        })
+        }
     }
     
     func pause() {
-        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player/pause", method: "PUT", header: header, body: nil, callback: {
+        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player/pause", method: "PUT", header: header, body: nil) {
             data, response, error in
             if response?.statusCode == 204 {
                 self.isPlaying = false
             }
             self.refreshPlaybackState()
-        })
+        }
     }
     
     func skip(backward: Bool = false) {
         let dir = backward ? "previous" : "next"
-        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player/\(dir)", method: "POST", header: header, body: nil, callback: {
+        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me/player/\(dir)", method: "POST", header: header, body: nil) {
             data, response, error in
             self.refreshPlaybackState()
-        })
+        }
     }
     
     var body: some View {

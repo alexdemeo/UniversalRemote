@@ -74,7 +74,7 @@ class SpotifyAuth {
             "client_secret": self.clientSecret,
         ]
         let context = self
-        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_AUTH)/api/token", method: "POST", header: nil, body: body) {data, response, error in
+        AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_AUTH)/api/token", method: "POST", header: nil, body: body) { data, response, error in
             context.onReceiveAcessToken(data: data, response: response, error: error)
         }
     }

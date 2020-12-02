@@ -35,22 +35,6 @@ class ObservedRokuButtons: ObservableObject {
     }
 }
 
-class ObservedCoffeeMachine: ObservableObject {
-    @Published var coffeeState: CoffeeState? = nil
-
-    func sendRefreshRequest() {
-        AppDelegate.instance.netAsync(url: "\(pi3URL)/status", method: "GET", header: nil, body: nil) {
-            data, response, error in
-            guard let data = data else {
-                return
-            }
-            let code = String(data: data, encoding: .utf8)
-            self.coffeeState = code == "on" ? .on : .off
-            print("machine is \(String(describing: code))")
-        }
-    }
-}
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
     let statusItem: NSStatusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.squareLength)
@@ -63,7 +47,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
     var networkManager: NetworkManager = NetworkManager.shared
     var rokuChannelButtons: ObservedRokuButtons = ObservedRokuButtons()
-    var coffeeMachine: ObservedCoffeeMachine = ObservedCoffeeMachine()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         rightClickMenu.addItem(NSMenuItem(title: "Quit", action: #selector(quit), keyEquivalent: ""))
@@ -76,9 +59,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if settings.remotes.contains(where: { $0.title == "Roku" && $0.enabled}) {
             self.rokuChannelButtons.sendRefreshRequest()
         }
-        if settings.remotes.contains(where: { $0.title == "Home" && $0.enabled}) {
-            self.coffeeMachine.sendRefreshRequest()
-        }
         let hostingController = NSHostingController(rootView:
                                                         ContentViewMain()
                                                         .environmentObject(self.settings)
@@ -86,7 +66,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                         .environmentObject(self.networkManager.latestRequest)
                                                         .environmentObject(self.networkManager.latestResponse)
                                                         .environmentObject(self.rokuChannelButtons)
-                                                        .environmentObject(self.coffeeMachine)
                                                         .buttonStyle(BorderlessButtonStyle()))
         
         self.popover.contentViewController = hostingController

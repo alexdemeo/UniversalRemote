@@ -77,11 +77,11 @@ struct ComponentCoffee: View {
                 DatePicker("Schedule", selection: $schedTime, displayedComponents: .hourAndMinute).labelsHidden()
                 Spacer()
                 Button("✓") {
-                    self.command(cmd: "/schedule/\(time.hour!):\(time.minute!)", callback: nil)
+                    self.command(cmd: "schedule/\(time.hour!):\(time.minute!)", callback: nil)
                 }
                 Spacer(minLength: Constants.CELL_WIDTH / 5)
                 Button("ⓧ") {
-                    self.command(cmd: "/schedule/cancel", callback: nil)
+                    self.command(cmd: "schedule/cancel", callback: nil)
                 }
             }
             VStack { // TODO: printer

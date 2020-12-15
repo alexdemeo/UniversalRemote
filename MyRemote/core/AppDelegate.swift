@@ -24,14 +24,37 @@ class Response: ObservableObject {
 }
 
 class ObservedRokuButtons: ObservableObject {
-    @Published var array = [RemoteButton]()
-    
-    func sendRefreshRequest() {
-        AppDelegate.instance.netAsync(url: "\(AppDelegate.settings.rokuBaseURL)/query/apps", method: "GET", header: nil, body: nil, callback: nil)
-    }
-    
-    func updateFor(array: [RemoteButton]) {
-        self.array = array
+    @Published var array: [RemoteButton] = []
+    @Published var buttonToImg: [String: Data?] = [:]
+
+    func requestButtons() {
+        AppDelegate.instance.networkManager.async(url: "\(AppDelegate.instance.settings.rokuBaseURL)/query/apps", method: "GET", header: nil, body: nil) { data, response, error in
+            print("ObservedRokuButtons.requestButtons()")
+            var apps: [RokuApp] = []
+            if let data = data {
+                let info = String(data: data, encoding: .utf8)
+                apps = info!.matches(for: "<app.*<\\/app>").map({
+                    RokuApp(line: $0)
+                })
+            }
+            let buttons = apps.map({
+                RemoteButton(forType: .roku, symbol: $0.name, endpoint: .launch, command: $0.id, associatedApp: $0)
+            })
+            self.array = buttons
+            
+            self.array.forEach({ remoteButton in
+                let id = remoteButton.associatedApp!.id
+                AppDelegate.instance.networkManager.async(url: "\(AppDelegate.instance.settings.rokuBaseURL)/query/icon/\(id)", method: "GET", header: nil, body: nil) { data, response, error in
+                    guard let response = response else {
+                        self.buttonToImg[id] = nil
+                        return
+                    }
+                    if response.statusCode == 200 {
+                        self.buttonToImg[id] = data!
+                    }
+                }
+            })
+        }
     }
 }
 
@@ -45,7 +68,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var button: NSStatusBarButton!
     var settings: Settings = Settings.load()!
     var displaySettingsPane: DisplaySettingsPane = DisplaySettingsPane()
-    var networkManager: NetworkManager = NetworkManager.shared
+    var networkManager: NetworkManager = NetworkManager()
     var rokuChannelButtons: ObservedRokuButtons = ObservedRokuButtons()
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -57,7 +80,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         self.popover.behavior = .transient
         if settings.remotes.contains(where: { $0.title == "Roku" && $0.enabled}) {
-            self.rokuChannelButtons.sendRefreshRequest()
+            self.rokuChannelButtons.requestButtons()
         }
         let hostingController = NSHostingController(rootView:
                                                         ContentViewMain()
@@ -124,7 +147,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     static var settings: Settings {
         AppDelegate.instance.settings
-    } 
+    }
+    
+    func handleAsyncRokuResponseFrom(endpoint e: String, withResponse response: HTTPURLResponse) {
+        print("Result from endpoint: \(e) statusCode: \(self.networkManager.latestResponse.response?.statusCode ?? -1)")
+
+        if !e.matches(for: "^(?i)\\/(keypress)?\\/?volume\\/?(up|down)$").isEmpty
+            && response.statusCode == 200 {
+            // if it's a volume endpoint
+            if e.lowercased().contains("up") {
+            } else if e.lowercased().contains("down") {
+            } else if e.lowercased().contains("Lit_") {
+//                let char = e.split(separator: "_")[1]
+//                self.updateTextFieldFor(character: String(char))
+            }
+        } else if !e.matches(for: "^/query/apps$").isEmpty {
+//            self.rokuChannelButtons.set()
+        }
+    }
 }
 
 

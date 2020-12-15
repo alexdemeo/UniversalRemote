@@ -22,7 +22,6 @@ struct ContentViewMain: View {
                 Button(action: {
                     self.settings.save()
                     self.displaySettingsPane.shown.toggle()
-                    self.rokuChannelButtons.sendRefreshRequest()
                 }) {
                     Text("Save")
                 }.buttonStyle(DefaultButtonStyle())
@@ -72,7 +71,6 @@ struct ContentViewMain: View {
                 Button(action: {
                     self.settings.save()
                     self.displaySettingsPane.shown.toggle()
-                    self.rokuChannelButtons.sendRefreshRequest()
                 }) {
                     Text("Save")
                 }.buttonStyle(DefaultButtonStyle())

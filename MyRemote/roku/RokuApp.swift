@@ -8,31 +8,53 @@
 
 import SwiftUI
 
-struct RokuApp {
+
+struct SingleDeviceView: View {
+    @EnvironmentObject var observedRokuButtons: ObservedRokuButtons
+    @EnvironmentObject var networkManager: NetworkManager
+    @EnvironmentObject var settings: Settings
+    
+    let app: RokuApp
+    let imgData: Data?
+    let labeled: Bool
+    init(app: RokuApp, imgData: Data?, labeled: Bool) {
+        self.labeled = labeled
+        self.imgData = imgData
+        self.app = app
+    }
+    
+    init(app: RokuApp, imgData: Data?) {
+        self.init(app: app, imgData: imgData, labeled: false)
+    }
+    
+    var imgView: AnyView {
+        AnyView(Image(nsImage: NSImage(data: self.imgData!)!)
+            .renderingMode(.original)
+            .resizable()
+            .scaledToFit()
+                    .frame(width: Constants.CELL_WIDTH, height: Constants.CELL_HEIGHT * 0.75)
+            .scaleEffect(2))
+    }
+    
+    var body: some View {
+        if self.imgData == nil {
+            return AnyView(Text("Error"))
+        } else if labeled {
+            return AnyView(VStack(spacing: -4) {
+                self.imgView
+                Text(self.app.name)
+            })
+        } else {
+            return self.imgView
+        }
+    }
+}
+
+class RokuApp {
     let id: String
     let type: String
     let version: String
     let name: String
-    
-    var viewLabelless: some View {
-        if let imgData = AppDelegate.instance.netSync(url: "\(AppDelegate.settings.rokuBaseURL)/query/icon/\(self.id)", method: "GET") {
-            guard let resp = imgData.1 else {
-                return AnyView(Text(self.name))
-            }
-            if resp.statusCode == 200 {
-                return AnyView(Image(nsImage: NSImage(data: imgData.0!)!).resizable())
-            }
-        }
-        // currently same error text if reply fails or reply has bad statusCode. Should probably separate these
-        return AnyView(Text("ERROR"))
-    }
-    
-    var viewLabeled: some View {
-        VStack(spacing: -25) {
-            self.viewLabelless
-            Text(self.name)
-        }
-    }
     
     init(line: String) {
         let parts = line.replacingOccurrences(of: "\"", with: "").split(separator: " ")
@@ -65,7 +87,7 @@ struct RokuApp_Previews: PreviewProvider {
     static var previews: some View {
         ComponentRokuDevices()
             .environmentObject(AppDelegate.instance.rokuChannelButtons)
-            .frame(width: 300, height: 300).buttonStyle(BorderlessButtonStyle())
+            .frame(width: 300, height: 600).buttonStyle(BorderlessButtonStyle())
         //        HStack {
         //            ForEach(RemoteButton.getRokuButtons()) { btn in
         //                HStack {

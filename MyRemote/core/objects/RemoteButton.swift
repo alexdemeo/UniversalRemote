@@ -14,21 +14,19 @@ struct RemoteButton : Identifiable {
     let endpoint: CommandEndpoint
     let command: String
     let id: String
-    let httpMethod: String
     let associatedApp: RokuApp?
     
     init(forType type: RemoteType, symbol: String, endpoint: CommandEndpoint, command: String) {
-        self.init(forType: type, symbol: symbol, endpoint: endpoint, command: command,httpMethod: nil, associatedApp: nil)
+        self.init(forType: type, symbol: symbol, endpoint: endpoint, command: command, associatedApp: nil)
     }
     
-    init(forType type: RemoteType, symbol: String, endpoint: CommandEndpoint, command: String, httpMethod: String?, associatedApp: RokuApp?) {
+    init(forType type: RemoteType, symbol: String, endpoint: CommandEndpoint, command: String, associatedApp: RokuApp?) {
         self.type = type
         self.symbol = symbol
         self.endpoint = endpoint
         self.command = command
         self.id = symbol
         self.associatedApp = associatedApp
-        self.httpMethod = httpMethod ?? "POST"
     }
     
     private var commandStr: String {
@@ -39,14 +37,25 @@ struct RemoteButton : Identifiable {
         switch self.type {
         case .roku:
             self.roku()
-        case .spotify:
-            self.spotify()
         case .home:
             self.home()
+        case .spotify:
+            self.spotify()
         }
     }
     
     private func home() {
+    }
+    
+    private func roku() {
+        let url = "\(AppDelegate.instance.settings.rokuBaseURL)\(self.commandStr)"
+        AppDelegate.instance.networkManager.async(url: url, method: "POST", header: nil, body: nil) {
+            data, response, error in
+            guard let endpoint = NetworkManager.sanitizeURL(url: url) else {
+                return
+            }
+            AppDelegate.instance.handleAsyncRokuResponseFrom(endpoint: endpoint, withResponse: response!) // ik this is bad programming, currently too lazy to fix it
+        }
     }
     
     private func spotify() {
@@ -61,9 +70,5 @@ struct RemoteButton : Identifiable {
 //            print("Error: spotify() no access token")
 //            SpotifyAuth.shared.refreshCredentials()
 //        }
-    }
-    
-    private func roku() {
-        AppDelegate.instance.netAsync(url: "\(AppDelegate.settings.rokuBaseURL)\(self.commandStr)", method: "POST", header: nil, body: nil, callback: nil)
     }
 }

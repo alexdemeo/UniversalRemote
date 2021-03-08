@@ -104,8 +104,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     func application(_ application: NSApplication, open urls: [URL]) {
-//        self.spotifyAuth?.browserRedirect(urls: urls)
-        SpotifyAuth.shared.onReceiveAuthorizeResponse(urls: urls)
     }
     
     @objc func quit() {

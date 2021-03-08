@@ -71,7 +71,6 @@ struct Constants {
                                                                keyboardMode: KeyboardMode.off,
                                                                remotes: [
                                                                 RemoteData(title: "Roku", enabled: true),
-                                                                RemoteData(title: "Spotify", enabled: true),
                                                                 RemoteData(title: "Home", enabled: true)
                                                                ],
                                                                refreshToken: nil)

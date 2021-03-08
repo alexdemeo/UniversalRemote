@@ -39,8 +39,6 @@ struct RemoteButton : Identifiable {
             self.roku()
         case .home:
             self.home()
-        case .spotify:
-            self.spotify()
         }
     }
     
@@ -56,19 +54,5 @@ struct RemoteButton : Identifiable {
             }
             AppDelegate.instance.handleAsyncRokuResponseFrom(endpoint: endpoint, withResponse: response!) // ik this is bad programming, currently too lazy to fix it
         }
-    }
-    
-    private func spotify() {
-//        if let accessToken = SpotifyAuth.shared.accessToken {
-//            let header: [String: String] = [
-//                "Accept": "application/json",
-//                "Content-Type": "application/json",
-//                "Authorization": "Bearer \(accessToken)",
-//            ]
-//            AppDelegate.instance.netAsync(url: "\(SPOTIFY_URL_API)/v1/me\(self.commandStr)", method: self.httpMethod, header: header, body: nil, callback: nil)
-//        } else {
-//            print("Error: spotify() no access token")
-//            SpotifyAuth.shared.refreshCredentials()
-//        }
     }
 }

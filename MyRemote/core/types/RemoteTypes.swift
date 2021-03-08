@@ -10,7 +10,6 @@ import Foundation
 
 enum RemoteType: String, CaseIterable {
     case roku = "Roku"
-    case spotify = "Spotify"
     case home = "Home"
 }
 
@@ -18,9 +17,6 @@ enum CommandEndpoint: String {
     /**************** Roku endpoints ******************/
     case keypress = "keypress"
     case launch = "launch"
-    
-    /**************** Spotify endpoints ******************/
-    case player = "player"
     
     /**************** Home endpoints ******************/
     case coffee = "coffee"

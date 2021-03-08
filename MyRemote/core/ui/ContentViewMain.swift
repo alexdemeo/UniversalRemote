@@ -55,8 +55,6 @@ struct ContentViewMain: View {
                         }
                         if remote.title == RemoteType.roku.rawValue {
                             ContentViewRoku()
-                        } else if remote.title == RemoteType.spotify.rawValue {
-                            ContentViewSpotify()
                         } else if remote.title == RemoteType.home.rawValue {
                             ContentViewHome()
                         }

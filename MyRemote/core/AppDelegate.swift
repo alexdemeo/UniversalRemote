@@ -88,6 +88,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                                                         .environmentObject(self.displaySettingsPane)
                                                         .environmentObject(self.networkManager.latestRequest)
                                                         .environmentObject(self.networkManager.latestResponse)
+                                                        .environmentObject(self.networkManager)
                                                         .environmentObject(self.rokuChannelButtons)
                                                         .buttonStyle(BorderlessButtonStyle()))
         

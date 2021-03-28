@@ -21,6 +21,7 @@
 		EF838F3D24ABDD2D00A7DAAA /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F3C24ABDD2D00A7DAAA /* Settings.swift */; };
 		EF838F4124ABE07500A7DAAA /* settings.json in Resources */ = {isa = PBXBuildFile; fileRef = EF838F4024ABE07500A7DAAA /* settings.json */; };
 		EF8EBEF924BEAFA8003FEF8A /* CompRokuDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF8EBEF824BEAFA8003FEF8A /* CompRokuDevices.swift */; };
+		EFC95CFA26103E9500F9FD68 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC95CF226103E6100F9FD68 /* UserNotifications.framework */; };
 		EFD8EA3C24A5AE0700407555 /* ContentViewRoku.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */; };
 		EFD8EA4024A5AE4100407555 /* ContentViewSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */; };
 		EFD8EA4624A5CF8200407555 /* RemoteTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFD8EA4524A5CF8200407555 /* RemoteTypes.swift */; };
@@ -71,6 +72,7 @@
 		EF838F3C24ABDD2D00A7DAAA /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EF838F4024ABE07500A7DAAA /* settings.json */ = {isa = PBXFileReference; explicitFileType = text.json; fileEncoding = 4; path = settings.json; sourceTree = "<group>"; };
 		EF8EBEF824BEAFA8003FEF8A /* CompRokuDevices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompRokuDevices.swift; sourceTree = "<group>"; };
+		EFC95CF226103E6100F9FD68 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		EFD8EA3B24A5AE0700407555 /* ContentViewRoku.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewRoku.swift; sourceTree = "<group>"; };
 		EFD8EA3F24A5AE4100407555 /* ContentViewSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewSettings.swift; sourceTree = "<group>"; };
 		EFD8EA4324A5B9EF00407555 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EFC95CFA26103E9500F9FD68 /* UserNotifications.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -232,6 +235,14 @@
 			path = settings;
 			sourceTree = "<group>";
 		};
+		EFC95CF126103E6100F9FD68 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EFC95CF226103E6100F9FD68 /* UserNotifications.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		EFD8EA4424A5CF6D00407555 /* core */ = {
 			isa = PBXGroup;
 			children = (
@@ -254,6 +265,7 @@
 				EFD964C124A55D5800BCBB86 /* MyRemoteTests */,
 				EFD964CC24A55D5800BCBB86 /* MyRemoteUITests */,
 				EFD964AA24A55D5600BCBB86 /* Products */,
+				EFC95CF126103E6100F9FD68 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};

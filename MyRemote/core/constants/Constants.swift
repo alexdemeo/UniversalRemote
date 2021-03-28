@@ -73,7 +73,8 @@ struct Constants {
                                                                 RemoteData(title: "Roku", enabled: true),
                                                                 RemoteData(title: "Home", enabled: true)
                                                                ],
-                                                               refreshToken: nil)
+                                                               coffeeDefaultSchedTime: schedTimeFor("8:30", calendar: Calendar.current),
+                                                               coffeeNotificationDelayMinutes: "15")
     
     static let ROKU_APP_QUERY_TIMEOUT_SECONDS: Int  = 5
         

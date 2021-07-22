@@ -110,7 +110,8 @@ struct ComponentCoffee: View {
     
     var body: some View {
         let time = Calendar.current.dateComponents([.hour, .minute], from: self.schedTime)
-        return VStack(alignment: .leading, spacing: 20) {
+        return VStack(alignment: .center, spacing: 20) {
+            Text("Coffee machine").bold()
             HStack(alignment: .center) {
                 Text(self.status)
                     .padding(.trailing, 35)
@@ -133,7 +134,7 @@ struct ComponentCoffee: View {
             VStack { // TODO: printer
                 
             }
-        }.padding(.all).frame(width: Constants.REMOTE_WIDTH / 2, height: Constants.REMOTE_HEIGHT, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) .onReceive(timer) { time in
+        }.padding(.all).frame(width: Constants.REMOTE_WIDTH / 2, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/) .onReceive(timer) { time in
             if self.timeSeconds >= 0 {
                 self.timeSeconds += 1
             }

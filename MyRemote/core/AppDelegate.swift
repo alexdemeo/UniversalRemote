@@ -79,6 +79,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.sendAction(on: [.leftMouseUp, .rightMouseUp])
         }
         self.popover.behavior = .transient
+        self.popover.appearance = NSAppearance(named: .darkAqua)
         if settings.remotes.contains(where: { $0.title == "Roku" && $0.enabled}) {
             self.rokuChannelButtons.requestButtons()
         }

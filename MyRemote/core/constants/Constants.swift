@@ -60,8 +60,8 @@ struct Constants {
                                                             "\\"            : Buttons.Roku.ASTERISK,
                                                             
                                                             "="             : Buttons.Roku.VOLUME_UP,
-                                                            "-"             : Buttons.Roku.VOLUME_DOWN
-                                                    //        "0"             : Buttons.Roku.MUTE,
+                                                            "-"             : Buttons.Roku.VOLUME_DOWN,
+                                                            "escape"        : Buttons.Roku.MUTE,
                                                     //        "escape"        : Buttons.Roku.?
                                                     ]
     

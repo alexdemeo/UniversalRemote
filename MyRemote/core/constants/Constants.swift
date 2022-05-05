@@ -60,8 +60,8 @@ struct Constants {
                                                             "\\"            : Buttons.Roku.ASTERISK,
                                                             
                                                             "="             : Buttons.Roku.VOLUME_UP,
-                                                            "-"             : Buttons.Roku.VOLUME_DOWN
-                                                    //        "0"             : Buttons.Roku.MUTE,
+                                                            "-"             : Buttons.Roku.VOLUME_DOWN,
+                                                            "escape"        : Buttons.Roku.MUTE,
                                                     //        "escape"        : Buttons.Roku.?
                                                     ]
     
@@ -71,10 +71,10 @@ struct Constants {
                                                                keyboardMode: KeyboardMode.off,
                                                                remotes: [
                                                                 RemoteData(title: "Roku", enabled: true),
-                                                                RemoteData(title: "Spotify", enabled: true),
                                                                 RemoteData(title: "Home", enabled: true)
                                                                ],
-                                                               refreshToken: nil)
+                                                               coffeeDefaultSchedTime: schedTimeFor("8:30", calendar: Calendar.current),
+                                                               coffeeNotificationDelayMinutes: "15")
     
     static let ROKU_APP_QUERY_TIMEOUT_SECONDS: Int  = 5
         

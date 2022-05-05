@@ -10,26 +10,38 @@ import SwiftUI
 
 struct ComponentRokuDevices: View {
     @EnvironmentObject var rokuChannelButtons: ObservedRokuButtons
+    @EnvironmentObject var networkManager: NetworkManager
     
     var body: some View {
-        if self.rokuChannelButtons.array.isEmpty {
-            return AnyView(Text("Couldn't load roku apps. Check IP"))
-        } else {
-            let inputs = self.rokuChannelButtons.array.filter({ $0.associatedApp?.type == "tvin" })
-            let channels = self.rokuChannelButtons.array.filter({ $0.associatedApp?.type == "appl" })
-            return AnyView(VStack {
-                ComponentGroupedView(inputs.map({ btn in
-                    AnyView(Button(action: btn.exec) {
-                        btn.associatedApp!.viewLabeled.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL - 15, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL + 14 - 15).scaledToFit()
-                    })
-                }))
-                ComponentGroupedView(channels.map({ btn in
-                    AnyView(Button(action: btn.exec) {
-                        btn.associatedApp!.viewLabelless.frame(width: Constants.CELL_WIDTH - Constants.SPACING_VERTICAL - 15, height: Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL - 10).scaledToFit()
-                    })
-                }))
-            })
-        }
+        let inputs = self.rokuChannelButtons.array.filter({ $0.associatedApp?.type == "tvin" })
+        let channels = self.rokuChannelButtons.array.filter({ $0.associatedApp?.type == "appl" })
+        let w =  Constants.CELL_WIDTH / 1.5
+        let h = Constants.CELL_HEIGHT + Constants.SPACING_VERTICAL * 1.75
+        return AnyView(VStack {
+            ComponentGroupedView(inputs.map({ btn in
+                AnyView(Button(action: btn.exec) {
+                    SingleDeviceView(
+                        app: btn.associatedApp!,
+                        imgData: self.rokuChannelButtons.buttonToImg[btn.associatedApp!.id] as? Data,
+                        labeled: true
+                    )
+                    .frame(width: w, height: h)
+                    .padding(.horizontal, -5)
+                    .scaledToFit()
+                })
+            })).padding(.bottom, -10)
+            ComponentGroupedView(channels.map({ btn in
+                AnyView(Button(action: btn.exec) {
+                    SingleDeviceView(
+                        app: btn.associatedApp!,
+                        imgData: self.rokuChannelButtons.buttonToImg[btn.associatedApp!.id] as? Data
+                    ).frame(width: w, height: h)
+                    .padding(.horizontal, -5)
+                    .padding(.vertical, -15)
+                    .scaledToFit()
+                })
+            }))
+        })
     }
 }
 
@@ -37,6 +49,6 @@ struct ComponentRokuDevices_Previews: PreviewProvider {
     static var previews: some View {
         ComponentRokuDevices()
             .environmentObject(AppDelegate.instance.rokuChannelButtons)
-            .frame(width: 300, height: 300).buttonStyle(BorderlessButtonStyle())
+            .frame(width: 300, height: 600).buttonStyle(BorderlessButtonStyle())
     }
 }

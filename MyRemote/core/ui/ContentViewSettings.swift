@@ -23,6 +23,18 @@ struct ContentViewSettings: View {
                 ComponentRemotePicker()
             }
         }
+        HStack {
+            Text("Default coffee schedule")
+            Spacer()
+            DatePicker("", selection: $settings.coffeeDefaultSchedTime, displayedComponents: .hourAndMinute).labelsHidden()
+        }
+        HStack {
+            Text("Heat notification delay")
+            TextField("", text: $settings.coffeeNotificationDelayMinutes)
+                .multilineTextAlignment(.trailing)
+                .labelsHidden()
+            Text("minutes")
+        }
     }
 }
 
